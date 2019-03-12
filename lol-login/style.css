@@ -1,0 +1,91 @@
+@charset "UTF-8";
+#center {
+	height:560px;
+	background: url("../image/bg.jpg");
+}
+
+#context {
+	/* border: 1px solid red; */
+	width: 500px;
+    height:400px;
+    padding-top: 50px;
+	float:right;
+	margin-top: 80px;
+	margin-right:10px;
+	background-color: rgba(0,0,0,0);
+}
+#txt {
+	width:430px;
+	height:400px;
+	/* border: 1px solid blue; */
+	margin: 0px auto;
+}
+#registform p {
+	font-size:18px;
+	line-height: 40px;
+	color:#fff;
+}
+#registform a {
+	font-size:13px;
+	float:right;
+	color:black;
+	text-decoration: none;
+	padding-right: 140px;
+}
+.text {
+	font-size: 14px; 
+	color:#fff;
+}
+.text input{
+	padding:10px 20px;
+	width:200px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+#bt-register {
+	margin-left: 80px;
+}
+
+.errorinfo {
+	color:white;
+	font-size: 12px;
+	background-color: black;
+}
+.default {
+	background-color: gray;
+}
+.success {
+	background-color: #0d0;
+}
+#foot {
+	height:180px;
+	text-align: center;
+	font-size: 10px;
+}
+.lf {
+	float: left;
+	padding-top: 50px;
+	width:65px;
+	height:80px;
+}
+#icon1 {
+	margin-left: 270px;
+}
+#icon2 , #icon3 , #icon4 {
+	margin-left:190px;
+}
+body {
+	background-color: #f5f5f5;
+}
+
+#top {
+	height:60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	/* //padding-left: 200px; */
+	font-size: 30px;
+}
+
+.color {
+    color: black;
+}

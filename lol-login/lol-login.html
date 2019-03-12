@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>皮肤商城登陆</title>
+<link rel="stylesheet" href="./css/login.css" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="./page/favicon.ico" type="image/x-icon" />
+
+<style>
+    #video{
+        position: absolute;right:0px;top: 0px; 
+    }
+    #context
+    {
+        position: absolute; right: 100px; top: 100px;
+    }
+    .text{
+        opacity: 0.7;
+    }
+    *{ 
+        margin: 0;
+        padding: 0;
+    }
+ 
+    
+    .starwars-demo{
+        height: 17em;
+        width: 34em;
+        /* background-color: red; */
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        /* 变形属性 translate 移动 */
+        transform: translate(-50%,-50%);
+        transform-style: preserve3d;
+        perspective: 800px; /*透视点*/
+    }
+    .star, .wars, .byline{
+        position: absolute;
+    }
+    .star{
+        top: -0.75em;
+        animation:star 10s infinite;
+    }
+    @keyframes star{
+        0%{opacity: 0; transform: translateZ(-400em);}
+        20%{opacity: 1;transform: scale(1);}
+        89%{opacity: 1; }
+        100%{opacity: 0; transform: scale(1.5);}
+    }
+    .wars{
+        animation: wars 10s infinite;
+        bottom: -0.5em;
+    }
+    @keyframes wars{
+        0%{opacity: 0; transform:translateZ(-400em);}
+        20%{opacity: 1; transform:scale(1);}
+        90%{opacity: 1; transform:scale(1);}
+        100%{opacity: 0; transform:scale(1.5);}
+    }
+    .byline{
+        color:yellow;
+        font-size: 2.35em;
+        font-family:楷体;
+        left: -2em;
+        top: 35%;
+        letter-spacing: .23em;
+        text-transform: uppercase;
+    }
+    .byline span{ display: inline-block;
+        animation:spin-letters 10s infinite;
+    }
+    @keyframes spin-letters{
+        0%{opacity: 0; transform: rotateY(90deg);}
+        30%{opacity: 1;}
+        70%,80%{transform: rotateY(0deg);}
+        100%{opacity: 0; transform: rotateY(90deg);}
+    }
+
+    </style>
+</head>
+<body>
+    <div id=video>
+    <video autoplay loop style="width: 100%;">
+        <source src="D:/FFOutput/Awaken.mkv">
+    </video>
+    
+    </div>
+    <div id="context">
+			<form id="loginform" action="UserLoginServlet" method="post">
+                    <div class="login-container">
+                            <div class="default">
+                            <div class="head-img-row">
+                                <img src="./page/Q版瑞雯.jpg" alt="">
+                            </div>
+                            <p class="user-name">你好，召唤师</p>
+                            <div class="text">
+                                    <input type="text" placeholder="请输入您的用户名" name="uname" id="uname" required>
+                                    <span></span>
+                            </div>
+                            <div class="text">
+                                    <input type="password" id="upwd" placeholder="请输入您的密码" name="upwd" required minlength="6" maxlength="15">
+                                    <span></span>
+                            </div>
+                            <a href="" class="btn btn-login">立即登录</a>
+                            <a href="" class="regist">没有账号？注册</a>
+                        </div>
+                    </div>
+                    </div>
+
+			</form>
+        </div>
+        <div>
+            <img src="./page/logo.png" alt="" class="logo">
+        </div>
+	<div class="starwars-demo">
+        <img src="../image/star.svg" alt="" class="star">
+        <img src="../image/wars.svg" alt="" class="wars">
+        <h2 class="byline">
+            
+            <span>欢</span>
+            <span>迎</span>
+            <span>来</span>
+            <span>到</span>
+            <span>英</span>
+            <span>雄</span>
+            <span>联</span>
+            <span>盟</span>
+            <span> </span>
+            <span> </span>
+            <span> </span>
+            <span> </span>
+            <span> </span>
+            <span>皮</span>
+            <span>肤</span>
+            <span>商</span>
+            <span>城</span>
+            <span>!</span>
+        </h2>
+    </div>
+
+</body>
+</html>

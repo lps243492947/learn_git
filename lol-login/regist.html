@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="./page/favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<title>注册页面</title>
+<link rel="stylesheet" href="./style.css" />
+
+<!-- 所有的js脚本语言，都要写在script标签中 -->
+<!-- <script type="text/javascript">
+	//定义一个变量
+	var time = "今天是星期一!!";
+	//重新赋值time的值
+	time = 12;
+</script> -->
+<style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          background: url(./page/千纸传说.jpg);
+          background-size: 100%;
+        }
+        img {
+          width: 100%;
+        }
+        .starwars-demo {
+          height: 17em;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 34em;
+          /* 移到中间来呢？  */
+          transform: translate(-50%, -50%);
+          perspective: 800px;
+          transform-style: preserve-3d; 
+        }
+        
+        .star{
+            position: absolute;
+        }
+         .star {
+             right: 37em;
+             bottom: 17em;
+             animation:  star 10s ease-out infinite;
+         }
+          /* animation声明一下,keyframes 关键帧 */
+          @keyframes star {
+              0% {
+                  opacity: 0; /*透明度*/
+                  transform: scale(0.25);
+              }
+              50% {
+                  opacity: 1;
+              }
+              89% { /* frame */
+                  opacity: 1;
+                  transform: scale(0.5);
+              }
+              100% {
+                  opacity: 0;
+              }
+          }
+        </style>
+</head>
+<body>
+        <div class="starwars-demo">
+                <img src="./page/logo.png" alt="" class="star">
+              </div>
+	<!-- 页面顶部 ：logo部分-->
+	<!-- 页面中部：内容部分 -->
+    <!-- <div id="center"> -->
+	<div id="context">
+		<form id="registform" action="userRegistServlet" method="post">
+			<div id="txt">
+				<p style="color:black">新用户注册 
+					<span><a  href="login.html">登录页面</a></span>
+				</p>
+				<div class="text">
+                    <label for="uname" class="color">用户名：</label>
+					<input onblur="check_onblur_uname();" onfocus="check_onfocus_uname();" type="text" name="uname" id="uname" maxlength="10" placeholder="请输入用户名"  autofocus required />
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="upwd" class="color">密&nbsp;&nbsp;&nbsp;码：</label>
+					<input onblur="check_onblur_upwd();" onfocus="check_onfocus_upwd();" type="password" name="upwd" id="upwd" maxlength="10" placeholder="请输入密码"  autofocus required/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="email" class="color">邮&nbsp;&nbsp;&nbsp;箱：</label>
+					<input onblur="check_onblur_email();" onfocus="check_onfocus_email();" type="email" name="email" id="email" placeholder="请输入邮箱"  autofocus required/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="phone" class="color">手&nbsp;&nbsp;&nbsp;机：</label>
+					<input onblur="check_onblur_phone();" onfocus="check_onfocus_phone();" type="text" name="phone" id="phone" placeholder="请输入手机号"  autofocus required pattern="^1(3|5|7|8)\d{9}"/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<input type="button" value="提交注册信息" id="bt-register" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	//定义一个函数：定义uname的聚焦事件
+	function check_onfocus_uname() {
+		//1.获取uname的文本框对象
+		var uname = document.getElementById("uname");
+		//2.获取uname的下一个节点对象
+		uname.nextElementSibling.innerHTML = "用户名在6~9之间";
+		//3.<span class="errorinfo">重新定义class的样式
+		uname.nextElementSibling.className="errorinfo default";
+	}
+	//失去焦点事件
+	function check_onblur_uname() {
+		var uname = document.getElementById("uname");
+		var value = uname.value;
+		//标准格式：6~9个字符
+		//1.非空校验
+		if (value.length == 0) {
+			uname.nextElementSibling.innerHTML="用户名不能为空";
+			uname.nextElementSibling.className="errorinfo";
+		}
+		//2.错误格式校验
+		else if (value.length <6 || value.length > 9) {
+			uname.nextElementSibling.innerHTML="用户名在6~9之间";
+			uname.nextElementSibling.className="errorinfo";
+		}
+		//3.正确格式校验
+		else {
+			uname.nextElementSibling.innerHTML="用户名格式正确";
+			uname.nextElementSibling.className="errorinfo success";
+		}
+	}
+	//获取焦点验证 密码
+	function check_onfocus_upwd() {
+		var upwd = document.getElementById("upwd");
+		upwd.nextElementSibling.innerHTML="密码在5~10之间";
+		upwd.nextElementSibling.className="errorinfo default";
+	}
+	//失去焦点验证 密码
+	function check_onblur_upwd() {
+		var upwd = document.getElementById("upwd");
+		var value = upwd.value;
+		//1.非空
+		if (value.length == 0) {
+			upwd.nextElementSibling.innerHTML="密码不能为空";
+			upwd.nextElementSibling.className="errorinfo";
+		}
+		//2.错误格式
+		else if (value.length < 5 || value.length > 10) {
+			upwd.nextElementSibling.innerHTML="密码长度在5~10之间";
+			upwd.nextElementSibling.className="errorinfo";
+		}
+		//3.正确格式
+		else {
+			upwd.nextElementSibling.innerHTML="密码格式正确";
+			upwd.nextElementSibling.className="errorinfo success";
+		}
+	}
+	//使用jquery进行操作页面
+	//该方法不需要调用！！！！
+	$("#email").focus(function() {
+		this.nextElementSibling.innerHTML="请输入合法的邮箱";
+		this.nextElementSibling.className="errorinfo default";
+	});
+	//失去焦点的事件
+	$("#email").blur(function() {
+		//1.非空校验
+		if (this.validity.valueMissing) {
+			this.nextElementSibling.innerHTML="邮箱不能为空";
+			this.nextElementSibling.className="errorinfo";
+		}
+		//2.格式错误校验
+		else if (this.validity.typeMismatch) {
+			this.nextElementSibling.innerHTML="邮箱格式不正确";
+			this.nextElementSibling.className="errorinfo";
+		}
+		//3.格式正确提示
+		else {
+			this.nextElementSibling.innerHTML="邮箱格式正确";
+			this.nextElementSibling.className="errorinfo success";
+		}
+	});
+	
+	//手机号 聚焦
+	$("#phone").focus(function() { 
+		this.nextElementSibling.innerHTML="请输入正确的手机号";
+		this.nextElementSibling.className="errorinfo default";
+	});
+	//手机号 失去焦点 
+	$("#phone").blur(function() {
+		    if (this.validity.valueMissing) {
+		    	this.nextElementSibling.innerHTML="手机号不能为空";
+				this.nextElementSibling.className="errorinfo";
+		    } else if (this.validity.patternMismatch) {
+		    	this.nextElementSibling.innerHTML="手机号格式不正确";
+				this.nextElementSibling.className="errorinfo";
+		    } else {
+		    	this.nextElementSibling.innerHTML="手机号格式正确";
+				this.nextElementSibling.className="errorinfo success";
+		    }
+	});
+
+	//点击注册按钮
+	$("#bt-register").click(function() {
+		//只有在四个文本框都校验通过后，才能提交
+		var lengths = 0;
+		$(".text").each(function() {
+			if ($(this).find("span").hasClass("errorinfo success")) {
+				lengths ++;
+				alert(lengths);
+			}
+			if (lengths == 4) {
+				$("#registform").submit();
+			}
+		});
+	});
+	
+	
+</script>
+</html>

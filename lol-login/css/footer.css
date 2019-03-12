@@ -1,0 +1,161 @@
+@charset "utf-8";
+/*品质保障等*/
+.foot_bj{
+    background-color: #fff;
+}
+#foot_box {
+    height: 82px;
+    /*margin-top: 74px;*/
+    /*margin-bottom: 43px;*/
+    width: 1004px;
+    text-align: center;
+    clear: both;
+    margin:43px auto 74px;
+}
+#foot_box h3{
+    font-weight: inherit;
+}
+#foot_box .icon1 {
+    width: 65px;
+    height: 80px;
+    margin-left: 100px;
+    /*border:1px solid yellow;*/
+}
+
+#foot_box .icon2 {
+    width: 65px;
+    height: 80px;
+    margin-left: 184px;
+    margin-right: 184px;
+    /*border:1px solid blue;*/
+}
+
+#foot_box .icon3 {
+    width: 65px;
+    height: 80px;
+    margin-right: 184px;
+    /*border:1px solid yellow;*/
+}
+
+#foot_box .icon4 {
+    width: 65px;
+    height: 80px;
+    /*border: 1px solid blue;*/
+}
+
+/*页面底部*/
+#foot {
+    width:1000px;
+    /*width: 100%;*/
+    margin: 0 auto;
+    /*margin-top: 80px;*/
+    padding-top: 62px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    color: black;
+    clear: both;
+    font-family: "microsoft yahei";
+}
+.footLogo{
+    margin-right: 92px;
+    padding-left: 20px;
+}
+
+.wb{
+    position: absolute;
+    top:-43px;
+    left:84px;
+    z-index: 1000;
+    display: none;
+}
+.weibo:hover .wb{
+    display: block;
+}
+.foot_left{
+    float: left;
+    width: auto;
+    min-height:100px;
+}
+.foot_left ul {
+    float: left;
+    margin-right: 57px;
+    margin-bottom: 20px;
+    line-height: 26px;
+}
+
+.foot_left ul li {
+    height: 26px;
+    position: relative;
+    text-align: center;
+}
+
+.foot_left ul li h3 {
+    color: #333;
+    font:14px simhei;
+    font-weight: inherit;
+}
+
+.foot_left ul li a {
+    color: #808080;
+    font:12px simhei;
+    font-weight: inherit;
+}
+.foot_left ul li a:hover{
+    color: #333;
+}
+.foot_left ul li.odd {
+    margin-left: 15px;
+}
+
+.foot_left ul li img {
+    display: inline-block;
+    /*position: absolute;*/
+    /*left: -20px;*/
+    /*top: 3px;*/
+}
+
+#foot .service {
+    float: left;
+    text-align: center;
+    margin-right: 6px;
+    margin-bottom: 20px;
+    margin-left: 46px;
+    width:125px;
+    position: relative;
+}
+#foot .service img{
+    cursor: pointer;
+}
+.service p{
+    margin-bottom: 11px;
+    color: #333;
+    font:14px simhei;
+    font-weight: inherit;
+}
+#foot .download {
+    float: left;
+    text-align: center;
+    line-height: 26px;
+    margin-bottom: 20px;
+}
+
+.record {
+    clear: both;
+    line-height: 22px;
+    /*padding-top: 10px;*/
+    padding-bottom: 26px;
+    /*margin: 0px auto;*/
+    display: block;
+    /*padding-left: 13px;*/
+    /*text-align: center;*/
+}
+/*底部*/
+#foot .footer2{
+    padding:6px 50px 18px 20px;
+}
+#foot .service img{
+    margin-bottom: 3px;
+}
+#foot .foot_left ul li img{
+    margin-right: 4px;
+}
