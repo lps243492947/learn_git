@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #evParent {
+        width: 400px;
+        height: 300px;
+        border: 1px solid #000;
+    }
+
+    #ev {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000000;
+    }
+
+    #ev img {
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div id="evParent">
+            父级
+        <div id = "ev">
+            <img src="http://po6khh05j.bkt.clouddn.com/ie6.jpg" alt="">
+        </div>
+    </div>
+    <script>
+    const ev = document.getElementById('ev');
+    const evParent = document.getElementById('evParent');
+    // window
+    window.addEventListener('click',function () {
+        console.log('window capture');
+    },false);
+    // html
+    document.documentElement.addEventListener('click',() => {
+        console.log('document capture');
+    },false);
+    // body
+    document.body.addEventListener('click', () => {
+        console.log('body capture');
+    },false);
+    evParent.addEventListener('click',function () {
+        console.log('parent capture');
+    },false);
+    ev.addEventListener('click',function () {
+        console.log('target capture');
+    },false);
+    </script>
+</body>
+</html>
