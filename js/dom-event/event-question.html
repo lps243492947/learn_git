@@ -17,9 +17,11 @@
     // console.log() 出里面的内容 <li>1</li> 1
     // <li>2</li> 2 <li>3</li> 3
         const lists = document.getElementById('lists');
-        lists.addEventListener('click',() => {
-            console.log(event.target.innerHTML);
-        },true);
+        lists.addEventListener('click',function () {
+            if (event.target.tagName === 'LI') {
+                console.log(event.target.innerHTML);
+            }
+        });
     </script>
 </body>
 </html>
