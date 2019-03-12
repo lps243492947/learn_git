@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = "喻晗";
+        function dlName() {
+            // 函数局部作用域
+            // 函数运行时诞生
+            var dl = "徐士杰";
+            // 运行结束后回收
+        }
+        // 块级作用域
+        if (true) {
+            const csygls = "燕玲";
+        }
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+            setTimeout(function() {
+                console.log(' The number is ' + i);
+            },1000);
+        }
+        console.log(csygls);
+        console.log(name);
+    </script>
+</body>
+</html>

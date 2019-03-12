@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+<body>
+        <h1>Seven wonders of the world</h1>
+        <p>Do you know the seven wonders of the world?</p>
+        <div id="content">
+          <h2>Wonders from Antiquity</h2>
+          <p>This list comes to us from ancient times.</p>
+          <ul class="wonders" id="ancient">
+              <li class="exists">Great Pyramid of Giza</li>
+              <li>Hanging Gardens of Babylon</li>
+              <li>Lighthouse of Alexandria</li>
+              <li>Statue of Zeus at Olympia</li>
+              <li>Temple of Artemis at Ephesus</li>
+              <li>Mausoleum at Halicarnassus</li>
+              <li>Colossus of Rhodes</li>
+          </ul>
+          <h2>Modern wonders of the world</h2>
+          <p>This list was decided by vote.</p>
+          <ul class="wonders" id="new">
+              <li class="exists">Petra</li>
+              <li class="exists">Great Wall of China</li>
+              <Li class="exists">Christ the Redeemer</Li>
+              <Li class="exists">Machu Picchu</Li>
+              <li class="exists">Chichen Itza</li>
+              <li class="exists">Colosseum</li>
+              <li class="exists">Taj Mahal</li>
+          </ul>
+          <h2>References</h2>
+          <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Seven_Wonders_of_the_Ancient_World">Seven Wonders of the Ancient World</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/New7Wonders_of_the_World">New Wonders of the World</a></li>
+          </ul>
+        </div>
+      <script>
+        // console.log(document.body.childNodes[1].childNodes[0]);
+        // for(let i = 0;
+        //     i < document.body.childNodes.length; i++) {
+        //         console.log(document.body.childNodes[i]);
+        //     }
+        const titleElements = document.getElementsByTagName("h2");
+        console.log(titleElements[titleElements.length-1]);
+        // dom选择器得到的集合，是一个类数组(伪数组)
+        const existingElements = Array.from( document.getElementsByClassName("exists"));
+        console.log(existingElements.length);
+        existingElements.forEach(element => {
+            console.log(element.innerHTML);
+        })
+      </script>
+</body>
+</html>

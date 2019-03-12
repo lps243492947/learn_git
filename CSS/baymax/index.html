@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3电影-大白</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        height: 100vh;
+        background: radial-gradient(circle at center,#ffffff,#fff 50%,#aaa);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        /* background-color: red; */
+    }
+
+    .baymax {
+        border-bottom: 1.5em solid #000000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%,-40%);
+    }
+
+    .baymax:before,.baymax:after {
+        content: "";
+        background-color: #000000;
+        width: 12em;
+        height: 12em;
+        position: absolute;
+        top: -6em;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, #efefef, #efefef 50%, #000 50%, #000);
+        background-position: 0 -100%;
+        background-size: 200% 200%; /* 背景的大小 */
+    }
+    /* 左眼 */
+    .baymax:before {
+        left: -9em;
+        transform: skewX(4deg);
+        animation: blink 6s infinite;
+    }
+    /* 右眼 */
+    .baymax:after {
+        right: -9em;
+        transform: skewX(-4deg);
+        animation: blink 6s.2s infinite;
+    }
+    @keyframes blink {
+        0%,50% {
+            background-position: 0 100%;
+        }
+        85%,95% {
+            background-position: 0 75%;
+        }
+        100% {
+            background-position: 0 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="baymax">
+    </div>
+</body>
+</html>

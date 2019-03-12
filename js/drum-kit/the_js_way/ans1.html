@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ans1</title>
+</head>
+<body>
+        <h1>Some musical instruments</h1>
+        <ul>
+          <li id="clarinet" class="wind woodwind">
+            The <a href="https://en.wikipedia.org/wiki/Clarinet">clarinet</a>
+          </li>
+          <li id="saxophone" class="wind woodwind">
+            The <a href="https://en.wikipedia.org/wiki/Saxophone">saxophone</a>
+          </li>
+          <li id="trumpet" class="wind brass">
+            The <a href="https://en.wikipedia.org/wiki/Trumpet">trumpet</a>
+          </li>
+          <li id="violin" class="chordophone">
+            The <a href="https://en.wikipedia.org/wiki/Violin">violin</a>
+          </li>
+          <li id="harpsichord">
+            The <a href="https://en.wikipedia.org/wiki/Harpsichord">harpsichord</a>
+          </li>
+        </ul>
+        <script>
+        function linkInfo () {
+            //打印多少个A
+            //第一个标签的href
+            //最后一个标签的href
+            const links = document.getElementsByTagName("a");
+            console.log(links.length);
+            if (!links.length) return;
+            console.log(links[0].href);
+            console.log(links[links.length-1].href);
+        }
+
+        linkInfo();
+        console.log(
+            document.getElementById("saxophone").classList.contains("wind")
+        );
+        //判断某id的元素，具有某类名 true 丨 false
+        //找不到元素，还要找类名，提示错误
+        const hasClass = (id,SomeClass) => {
+          const idyuansu = document.getElementsByTagName(id)
+          const yuansu = classList.contains(SomeClass)
+          if (document.getElementsByTagName(id) != null) {
+            console.log(true)
+          } else {
+            console.log(false)
+          }
+        };
+        if (hasClass("saxophone","woodwind") {
+          
+        }
+        //hasClass
+        //saxophone woodwind true
+        //saxophone brass false
+        //trumpet brass true
+        //contrabass chorphone error
+        </script>
+</body>
+</html>

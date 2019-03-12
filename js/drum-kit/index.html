@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="keys">
+        <div class="key" date-key="65">
+            <div>A</div>
+            <span class="sound">clap</span>
+        </div>
+        <div class="key" date-key="83">
+            <div>S</div>
+            <span class="sound">hihat</span>
+        </div>
+        <div class="key" date-key="68">
+            <div>D</div>
+            <span class="sound">kick</span>
+        </div>
+        <div class="key" date-key="70">
+            <div>F</div>
+            <span class="sound">openhat</span>
+        </div>
+        <div class="key" date-key="71">
+            <div>G</div>
+            <span class="sound">boom</span>
+        </div>
+        <div class="key" date-key="72">
+            <div>H</div>
+            <span class="sound">ride</span>
+        </div>
+        <div class="key" date-key="74">
+            <div>J</div>
+            <span class="sound">snare</span>
+        </div>
+        <div class="key" date-key="75">
+            <div>K</div>
+            <span class="sound">tom</span>
+        </div>
+        <div class="key" date-key="76">
+            <div>L</div>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+    <audio date-key="65" src="./sounds/boom.wav" ></audio>
+    <audio date-key="83" src="./sounds/clap.wav" ></audio>
+    <audio date-key="68" src="./sounds/hihat.wav" ></audio>
+    <audio date-key="70" src="./sounds/kick.wav" ></audio>
+    <audio date-key="71" src="./sounds/openhat.wav" ></audio>
+    <audio date-key="72" src="./sounds/ride.wav" ></audio>
+    <audio date-key="74" src="./sounds/snare.wav" ></audio>
+    <audio date-key="75" src="./sounds/tink.wav" ></audio>
+    <audio date-key="76" src="./sounds/tom.wav" ></audio>
+    <script>
+    const clapSound = document.querySelector("audio");
+    console.log(clapSound);
+    const keys = document.querySelectorAll(".key");
+    console.log(keys);
+    function playSound (e) {
+        console.log(e.keyCode);
+        // ASDFGHJKL 怎么播放相应的声音呢？
+        // 根据键值得到相应的audio
+        const audio = document.querySelector("audio[date-key='" + e.keyCode + "']");
+        const key = document.querySelector("div[date-key='" + e.keyCode + "']");
+        // console.log(audio);
+        if(!audio) return;
+        audio.play();
+        key.classList.add('playing');
+        setTimeout(() => {
+            key.classList.remove('playing');
+        }, 20)
+    }
+    window.addEventListener('keydown', playSound);
+    </script>
+</body>
+</html>

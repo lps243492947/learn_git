@@ -1,0 +1,68 @@
+.watch {
+    background-color: black;
+    font-size: 32px;
+    width: 440px;
+    height: 488px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -220px;
+    margin-top: -244px;
+}
+.screen {
+    width: 59.2%;
+    height: 74%;
+    position: absolute;
+    left: 18%;
+    top: 13%;
+    /* background-color: red; */
+}
+.screen .dials {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    position: absolute;
+    top: 1.75em;
+    left: 0;
+    /* background-color: aqua; */
+}
+.dials.move {
+    position: absolute;
+    width: 8em;
+    height: 8em;
+}
+.dial.move::before {
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    position: absolute;
+    top: 0.29em;
+    left: calc(50% - 0.75em);
+}
+.dial.move::after {
+    content: '';
+}
+.dial-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4em;
+    /* overflow: hidden; */
+}
+.wedeg {
+    width: 4em;
+    height: 8em;
+    position: absolute;
+}
+.container1 {
+    left: 4em;
+}
+.container2 {
+    left: 0;
+}
+.container1 .wedeg {
+    background-color: #fc1d20;
+    left: -4em;
+    border-radius: 8em 0 0 8em;
+    transform-origin: 100% 50%;
+}
