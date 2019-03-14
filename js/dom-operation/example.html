@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事例</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-container {
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./index.html" id="link">./index.html</a>
+  <script>
+  const link = document.getElementById('link');
+  link.addEventListener('click',(event) => {
+      event.preventDefault(); // 阻止默认事件
+  })
+  </script>
+  <div class="container">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <!-- <th scope="col">序号</th> -->
+          <th scope="col">姓名</th>
+          <th scope="col">年龄</th>
+          <th scope="col">性别</th>
+          <th scope="col">单身</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>保密</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+  <form class="needs-validation form-container" novalidate id="form">
+    <div class="form-group">
+      <label for="nameInput">姓名</label>
+      <input type="text" class="form-control" id="nameInput" placeholder="请输入姓名" required>
+      <div class="valid-feedback">
+        pass
+      </div>
+      <div class="invalid-feedback">
+        请输入姓名
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ageInput">年龄</label>
+      <input type="number" class="form-control" id="ageInput" placeholder="请输入年龄" required>
+      <div class="valid-feedback">
+        pass
+      </div>
+      <div class="invalid-feedback">
+        请输入年龄
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sexInput">性别</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input inputRadio" type="radio" name="sexOption" id="inlineRadio1" value="m" required>
+        <label class="form-check-label" for="inlineRadio1">男</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input inputRadio" type="radio" name="sexOption" id="inlineRadio2" value="w" required>
+        <label class="form-check-label" for="inlineRadio2">女</label>
+        <div class="valid-feedback">
+          pass
+        </div>
+        <div class="invalid-feedback">
+          请选择性别
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sexInput">单身</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input inputRadio" type="radio" name="dogOption" id="doginlineRadio1" value="y"
+          required>
+        <label class="form-check-label" for="doginlineRadio1">是</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input inputRadio" type="radio" name="dogOption" id="doginlineRadio2" value="n"
+          required>
+        <label class="form-check-label" for="doginlineRadio2">否</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input inputRadio" type="radio" name="dogOption" id="doginlineRadio3" value="s"
+          required>
+        <label class="form-check-label" for="doginlineRadio3">保密</label>
+        <div class="valid-feedback">
+          pass
+        </div>
+        <div class="invalid-feedback">
+          请选择分类
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">提交</button>
+  </form>
+
+  <script>
+      const form = document.getElementById('form');
+      const nameInput = document.getElementById('nameInput');
+      const ageInput = document.getElementById('ageInput');
+      const sexRadioNodes = document.getElementsByName('sexOption');
+      const dogRadioNodes = document.getElementsByName('dogOption');
+      const tableBody = document.getElementById('tableBody');
+    //   <tr>
+    //       <td>name</td>
+    //       <td>age</td>
+    //       <td>sex</td>
+    //       <td>dog</td>
+    //     </tr>
+    // {name: '我', age: 18, sex: m, dog: s}
+    function insertNode (info) {
+        const keys = Object.keys(info); // keys返回一个数组 ['name', 'age', 'sex', 'dog']
+        const tr = document.createElement('tr')
+        for (let i = 0;i < keys.length;i++) {
+            const td = document.createElement('td');
+            const text = document.createTextNode(info[keys[i]]);
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+        tableBody.appendChild(tr);
+    }
+      form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const name = nameInput.value;
+          const age = ageInput.value;
+          for (let i = 0;i < sexRadioNodes.length;i++) {
+              if (sexRadioNodes[i].checked) {
+                  sex = sexRadioNodes[i].value;
+              }
+          }
+          for (let i = 0;i < dogRadioNodes.length;i++) {
+              if (dogRadioNodes[i].checked) {
+                  dog = dogRadioNodes[i].value;
+              }
+          }
+          insertNode(
+              {
+              name,
+              age,
+              sex,
+              dog,
+                }
+          )
+      })
+</script>
+</body>
+
+</html>

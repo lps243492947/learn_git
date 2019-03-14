@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom 操作</title>
+</head>
+<body>
+    <!-- <div id="box">
+        <p class="title">
+            未登录 
+        </p>
+    </div> -->
+    <script>
+    const divNode = document.createElement('div'); // 元素节点
+    divNode.id = "box";
+    const textNode = document.createTextNode('未登录'); // 文本节点
+    textNode.className = "title";
+    const pNode = document.createElement('p');
+    // appendChild(Node)这个方法一般是在指定元素节点的最后一个子节点之后添加节点
+    // 但如果Node是页面中的DOM对象，那么就不是添加节点了，就是直接Move节点。
+    pNode.appendChild(textNode);
+    divNode.appendChild(pNode);
+    document.body.appendChild(divNode);
+    </script>
+</body>
+</html>
