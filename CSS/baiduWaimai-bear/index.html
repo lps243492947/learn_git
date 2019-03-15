@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外卖小熊</title>
+    <link rel="stylesheet" href="./bear.css">
+</head>
+<body>
+    <button>按钮</button>
+    <div class="view preload">
+        <div class="load-logo-c">
+            <!-- 熊 -->
+            <div class="rider1-c">
+                <div class="rider1"></div>
+            </div>
+            <!-- 进度条 -->
+            <div class="process-c">
+                <div class="process-v"></div>
+            </div>
+            <div id="next">
+                下一屏
+            </div>
+        </div>
+    </div>
+    <div class="view index">
+
+    </div>
+    <script>
+    const process = document.querySelector('.process-v');
+    const next = document.getElementById('next');
+    next.addEventListener('click', () => {
+        const preload = document.querySelector('.view.preload');
+        preload.style.transform = 'translate3d(-.8rem, '+ -100 +'%, 0)';
+    })
+    let width = -10;
+    let interval=setInterval(() => {
+        width += 10;
+        console.log(width);
+        process.style.width = width + '%';
+        if (width >=100) clearInterval(interval);
+    },100); // 一直执行
+    setTimeout(() => {},100); // 只执行一次
+    </script>
+</body>
+</html>

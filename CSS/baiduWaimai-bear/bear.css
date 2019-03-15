@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 37.5px;
+}
+
+body {
+    /* 最高优先级 */
+    font-size: 0.38rem !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.view.preload {
+    z-index: 10;
+    background-color: #ffebeb;
+    transition: transform 1s;
+}
+/* 第二屏 */
+.view.index {
+    z-index: 9;
+    background-image: url(http://s0.map.bdimg.com/zt/y2015/waimaibear/mobile/images/sky2_ebebaff.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.view {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+/* 上半部分 */
+.load-logo-c {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+}
+/* 小熊的容器 */
+.rider1-c {
+    width: 6.5rem;
+    height: 1.890625rem;
+    margin: 0 auto .1rem;
+    position: relative;
+}
+
+.rider1 {
+    background-image: url(http://s1.map.bdimg.com/zt/y2015/waimaibear/mobile/images/rider1_1b78925.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 2.40625rem;
+    height: 1.89063rem;
+    position: absolute;
+    top: 0;
+    left: 4.75rem;
+    animation: riderDrive 1s 0s linear forwards; /* forwards 永不回头 */
+}
+@keyframes riderDrive {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    4% {
+        transform: translate3d(0, -.125rem, 0);
+    }
+    8% {
+        transform: translate3d(0, 0, 0);
+    }
+    16% {
+        transform: translate3d(-.4rem, -.125rem, 0);
+    }
+    24% {
+        transform: translate3d(-.8rem, 0, 0);
+    }
+    32%{
+        transform:translate3d(-1.2rem,-.125rem,0rem)
+      }
+      40%{transform:translate3d(-1.6rem,0rem,0rem)
+      }
+      48%{transform:translate3d(-2rem,-.125rem,0rem)
+      }
+      56%{transform:translate3d(-2.4rem,0rem,0rem)
+      }
+      64%{transform:translate3d(-2.8rem,-.125rem,0rem)
+      }
+      72%{transform:translate3d(-3.2rem,0rem,0rem)
+      }
+      80%{
+        transform:translate3d(-3.6rem,-.125rem,0rem)
+      }
+      88%{
+        transform:translate3d(-4rem,0rem,0rem)
+      }
+      96%{
+        transform:translate3d(-4.4rem,-.125rem,0rem)
+      }
+      100%{
+        transform:translate3d(-4.8rem,0rem,0rem)}
+
+}
+.process-c {
+    width: 6.25rem;
+    height: 0.245rem;
+    border: 2px solid #373838;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.process-v {
+    height: 100%;
+    background-color: #ff2d4b;
+    float: right;
+    border-radius: .2rem;
+    width: 25%;
+    transition: width .1s;
+}
