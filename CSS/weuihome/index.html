@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="page tabbar js_show">
+      <div class="page__bd">
+          <div class="weui-tab">
+            <!-- 3个页面 -->
+              <div class="weui-tab__panel tab show">
+                <div class="page__bd">
+                  <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+                  <div class="weui-search-bar" id="searchBar">
+                      <form class="weui-search-bar__form">
+                          <div class="weui-search-bar__box">
+                              <i class="weui-icon-search"></i>
+                              <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                              <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                          </div>
+                          <label class="weui-search-bar__label" id="searchText">
+                              <i class="weui-icon-search"></i>
+                              <span>搜索</span>
+                          </label>
+                      </form>
+                      <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                  </div>
+                  <div class="goods">
+                    <ul class="fruit-items">
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                      <li class="fruit-item">
+                        <div class="pic">
+                          <img src="./images/dangao.png" alt="">
+                        </div>
+                        <p>苹果 ¥5</p>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="weui-tab__panel tab">
+                <div class="aa">
+                  啊点拿手机来的努力
+                </div>
+              </div>
+              <div class="weui-tab__panel tab">
+                3123412423423
+              </div>
+            </div>
+            <div class="weui-tabbar">
+                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="./images/shuiguo_2.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                    </span>
+                    <p class="weui-tabbar__label">商城</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="./images/lingdang.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                    </span>
+                    <p class="weui-tabbar__label">购物车</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item">
+                    <img src="./images/shuiguo.png" alt="" class="weui-tabbar__icon">
+                    <p class="weui-tabbar__label">我的</p>
+                </a>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <script>
+    const choose = document.querySelectorAll('.weui-tabbar__item');
+    const tabs = document.querySelectorAll('.weui-tab__panel');
+    for (let i = 0; i < choose.length; i++) {
+      choose[i].addEventListener('click', function(){
+        // this.classList.add('weui-bar__item_on')
+        showTab.call(this)
+      })
+    }
+    // dasdasda
+    function showTab() {
+      for (let j = 0, len = tabs.length; j < len; j++) {
+        console.log(this)
+        if (choose[j] === this) {
+          choose[j].classList.add('weui-bar__item_on');
+          tabs[j].classList.add('show');
+        } else {
+          choose[j].classList.remove('weui-bar__item_on');
+          tabs[j].classList.remove('show');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

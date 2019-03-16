@@ -1,0 +1,47 @@
+.container, .page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.page__bd {
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto;  
+}
+
+.fruit-items{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+}
+
+.fruit-item {
+    width: 47%;
+    font-size: 0;
+    float: left;
+    margin: 5px;
+    background-color: #fff;
+}
+
+.fruit-item p {
+    font-size: 16px;
+    text-align: center;
+}
+
+.pic {
+    width: 100%;
+    height: 100%;
+}
+
+.pic img {
+    display: block;    
+    width: 100%;
+    height: 100%;
+}
+
+.tab {
+    display: block;
+}

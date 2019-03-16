@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM表格</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table id="mountains" class="table table-striped">
+            </div>
+        </div>
+    </div>
+        
+    </table>
+    <script>
+    // one row column table
+    // 数据可视化
+    // 动态DOM 可以让我们的界面实时更新，不用刷新页面
+    // let 不会添加到window中
+    let mountains = [
+  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Amiata", height: 1738, place: "Siena" }];
+
+  // 函数编程,最小单元:语句； 没有结构
+  // 函数作为最小单元, 完成功能的, 函数==功能 模块化
+  function generateTableHead(table) {
+      // 深度学习table DOM
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of data) {
+        console.log(key);
+        let th = document.createElement('th');
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
+  }
+  function generateTable(table, data) {
+        for (let element of data) {
+            let row = table.insertRow();
+            for(let key in element) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
+        } 
+  }
+  let table = document.querySelector("#mountains");
+  let data = Object.keys(mountains[0]);
+  generateTable(table, mountains);
+  generateTableHead(table, data);
+    </script>
+</body>
+</html>
