@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>年度听歌报告</title>
+    <link rel="shortcut icon" href="//s1.music.126.net/style/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+<body>
+    <audio src="./bgm.mp3" id="bgm"></audio>
+    <div class="music-btn off"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">slide -1</div>
+            <div class="swiper-slide">
+                <div class="view special">
+                    <div class="art">
+                            <div class="paras">
+                                    <p class="para f-animLineUp" style="transition-delay: 0.2s;">
+                                      <em class="s-fcRed">11月1日</em>
+                                    </p>
+                                    <p class="para f-animLineUp" style="transition-delay: 0.3s;">
+                                      大概是很特别的一天
+                                    </p>
+                                    <p class="para f-animLineUp" style="transition-delay: 0.4s;">
+                                      这一天里
+                                    </p>
+                                    <p class="para f-animLineUp" style="transition-delay: 0.5s;">
+                                      TA把Richard Clayderma…的
+                                      <em class="s-fcRed">《梦中的婚礼》</em>
+                                    </p>
+                                    <p class="para f-animLineUp" style="transition-delay: 0.6s;">
+                                      反复听了
+                                      <em class="s-fcRed">10次</em>
+                                    </p>
+                                  </div>
+                        <!-- 荡秋千 -->
+                        <div class="swing">
+                            <!-- 头 -->
+                            <div class="head">
+                                <div class="part">
+                                    
+                                </div>
+                            </div>
+                            <!-- 脖子 -->
+                            <div class="neck">
+
+                            </div>
+                            <!--  腿 -->
+                            <div class="leg1">
+                                <div class="jiojio">
+
+                                </div>
+                            </div>
+                            <div class="leg2">
+                                <div class="jiojio">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">slide -3</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    <script>
+    const musicBtn = document.querySelector('.music-btn');
+    const bgm = document.getElementById('bgm');
+    const paras = document.querySelector('.paras')
+    musicBtn.addEventListener('click', () => {
+        if (bgm.paused) {
+        bgm.play();
+        // musicBtn.classList.remove('off');
+        } else {
+        bgm.pause();
+        // musicBtn.classList.add('off');
+        }
+        musicBtn.classList.toggle('off');
+    });
+    var swiper = new Swiper('.swiper-container',{
+        direction: 'vertical',
+        on:{
+            slideChangeTransitionEnd: function () {
+               if (this.activeIndex === 1) {
+                paras.classList.add('z-enter');
+               } else {
+                paras.classList.remove('z-enter');
+               }
+            }
+        }
+    })
+    </script>
+</body>
+</html>

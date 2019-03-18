@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+/* music 按钮 */
+.music-btn {
+    top: 25px;
+    left: 25px;
+    width: 40px;
+    height: 40px;
+    background: url(https://kfc.normcore.com/bft_burger/static/images/icon-play.png) no-repeat center / cover;
+    position: fixed;
+    z-index: 9999;
+}
+
+.music-btn.off {
+    background-image: url(https://kfc.normcore.com/bft_burger/static/images/icon-mute.png);
+}
+/* view 2 */
+.view {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.view.special {
+    position: absolute;
+    background-image: linear-gradient(60deg,#f8ddd1,#faece5 73%,#fad2c0);
+}
+
+.art {
+    position: absolute;
+    width: 750px;
+    height: 1334px;
+    right: 0;
+    top: -140px;
+    transform: scale(.5);
+    transform-origin: top right;
+}
+
+.swing {
+    position: absolute;
+    left: 226px;
+    top: -180px;
+    width: 478px;
+    height: 1038px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/swing.88545d6c8e1ac798465e367f8e5357ab.png) no-repeat;
+    animation: ani_qiuqian 6s ease-in-out infinite;
+    transform-origin: -16% -29%;
+}
+@keyframes ani_qiuqian {
+    0% {
+        transform: rotateZ(0);
+    }
+    50% {
+        transform: rotateZ(30deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+/* 腿 */
+.swing .leg2 {
+    position: absolute;
+    left: 185px;
+    top: 958px;
+    width: 130px;
+    height: 32px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2.d7bc44a91b6974450f2ccc430846c63d.png) no-repeat;
+    animation: ani_leg2 8s ease-in-out infinite;
+    transform-origin: 91% 33%;
+}
+@keyframes ani_leg2 {
+    0% {
+        transform: rotateZ(0);
+    }
+    25% {
+        transform: rotateZ(-86deg);
+    }
+    50% {
+        transform: rotateZ(0);
+    }
+    75% {
+        transform: rotateZ(-86deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+.swing .leg2 .jiojio {
+    position: absolute;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2-part.8f70bb7fc789a70bc78c48aa7718a765.png) no-repeat;
+    left: -27.75px;
+    top: -10.5px;
+    width: 57px;
+    height: 44px;
+}
+
+.swing .leg1 {
+    position: absolute;
+    width: 63px;
+    height: 130px;
+    left: 290px;
+    top: 955px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1.b1df6a7d1a794d36fbd0e1277733e1cf.png) no-repeat;
+    transform-origin: 17% 13%;
+    animation: ani_leg1 8s ease infinite;
+}
+@keyframes ani_leg1 {
+    0% {
+        transform: rotateZ(0);
+    }
+    25% {
+        transform: rotateZ(108deg);
+    }
+    50% {
+        transform: rotateZ(0);
+    }
+    75% {
+        transform: rotateZ(108deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+.leg1 .jiojio {
+    position: absolute;
+    left: 26.25px;
+    top: 102.5px;
+    width: 39px;
+    height: 62px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1-part.f2f17703a6af8fd2af5e0f5a9f320623.png) no-repeat;
+}
+
+/* 头 */
+.swing .neck, .swing .head {
+    display: block;
+    position: absolute;
+    left: 451.125px;
+    top: 855.5px;
+    width: 51px;
+    height: 42px;
+  }
+  /* 脖子 */
+  .swing .neck {
+    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/neck.07a0013beff9796ed79c2cea542e5af2.png) no-repeat;
+  }
+  /* 头 */
+  .swing .head {
+    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/head.90bf892023d7df0522a4b53fc07e38df.png) no-repeat;
+    animation: ani2_head 8s ease infinite;
+  }
+  @keyframes ani2_head {
+      0% {
+          transform: rotateZ(0);
+      }
+      25% {
+          transform: rotateZ(-55deg);
+      }
+      62.5% {
+          transform: rotateZ(-55deg);
+      }
+      87% {
+          transform: rotateZ(0);
+      }
+      100% {
+          transform: rotateZ(0);
+      }
+  }
+  /* 头发 */
+  .swing .head .part {
+    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/head-part.22d4381c4bd6cb1c3afd2b1bfcfe22f1.png) no-repeat;
+    left: 20px;
+    top: 2px;
+    width: 40px;
+    height: 47px;
+    position: absolute;
+  }
+  /* 文字 */
+  .paras {
+      font-size: 1.5rem;
+      position: absolute;
+      bottom: 110px;
+      left: 10.67%;
+      letter-spacing: 1px;
+      color: #333;
+  }
+
+  .s-fcRed {
+      color: #df493a;
+  }
+
+  .z-enter .f-animLineUp {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1.2s, transform 1s;
+  }
+
+  .f-animLineUp {
+      opacity: 0;
+      transform: translateY(6px);
+  }
+
+  em, i {
+      text-align: left;
+  }
