@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SVG 戳碟</title>
+</head>
+<body>
+  <svg class="volumn-controller"width="580" height="400" xmlns="http://www.w3.org" style="fill:none">
+    <path class="volumn-path" stroke="#000"
+    d="m100,247c93,-128,284,-129 388,6"/>
+    <circle class="drag-button" r="12"
+     cy="247" cx="100" stroke-width="1" stroke="#000" fill="#fff"/>
+  </svg>
+  <audio src="http://wqs.jd.com/promote/201707/2018campus/plugin/bg_c2bd53.mp3" id="music" autoplay="true"></audio>
+  <script>
+  let volumnController = document.querySelector('.volumn-controller'),
+  volumnPath = volumnController.querySelector('.volumn-path'),
+  dragButton = volumnController.querySelector('.drag-button');
+  let dragButtonPos = dragButton.getBoundingClientRect();
+  console.log(dragButtonPos);
+  let pathTotalLength = parseInt(volumnPath.getTotalLength());
+  let points = [];
+  // 第一个点的x坐标
+  let startX = volumnPath.getPointAtLength(0).x;
+  for (let i = 0;i < pathTotalLength;i++) {
+      let p = volumnPath.getPointAtLength(i);
+      //  将每个path上的点的y坐标存起来 button client 计算后，取出来y
+      points[Math.round(p.x) - startX] = Math.round(p.y);
+  }
+//   console.log(points);
+  function movePoint(event) {
+    // console.log(event.clientX, event.clientY);
+    let diffX = event.clientX - Math.round(dragButtonPos.left + 12);
+    diffX < 0 && (diffX = 0); //  左边界
+    diffX >= points.length && (diffX = points.length - 1); // 右边界
+    dragButton.setAttribute('cx', diffX + startX);
+    dragButton.setAttribute('cy', points[diffX]);
+    let fb = (points[points.length-1]-points[diffX])/(points[points.length-1]-points[parseInt(points.length/2)]);
+    fb = fb >= 1? 1:fb;
+    music.volume = fb;
+  }
+  dragButton.addEventListener('mousedown', function(event) {
+    document.addEventListener('mousemove', movePoint);
+  });
+  document.addEventListener('mouseup', function() {
+    document.removeEventListener('mousemove',movePoint);
+  });
+  music = document.querySelector('#music');
+  music.volume = 0.1;
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>edit in place</title>
+</head>
+<body>
+    <div id="app">
+        <div id="ep1">
+            <span id="content">
+                明德厚学 爱国荣校
+            </span>
+            <input type="text" id="input" value="明德厚学 爱国荣校">
+            <input type="button" id="save" value="Save">
+            <input type="button" id="cancel" value="Cancel">
+        </div>
+        <div id="ep2">
+                <span id="content">
+                    明德厚学 爱国荣校
+                </span>
+                <input type="text" id="input" value="明德厚学 爱国荣校">
+                <input type="button" id="save" value="Save">
+                <input type="button" id="cancel" value="Cancel">
+            </div>
+    </div>
+    <script>
+        const save = document.getElementById('save');
+        const cancel = document.getElementById('cancel');
+        const input = document.getElementById('input');
+        const content = document.getElementById('content');
+        content.addEventListener('click',convertToEditAble);
+        convertToText();
+        // -> 查看状态
+    function convertToText() {
+        save.style.display = 'none';
+        cancel.style.display = 'none';
+        input.style.display = 'none';
+        content.style.display = 'inline';
+    }
+    function convertToEditAble() {
+        save.style.display = 'inline';
+        cancel.style.display = 'inline';
+        input.style.display = 'inline';
+        content.style.display = 'none';
+    }
+    save.addEventListener('click',() => {
+        setTimeout(() => {
+            const val = input.value;
+            console.log('保存成功');
+            // 读
+            console.log(content.innerHTML);
+            // 写
+            content.innerHTML = val;
+            convertToText();
+        },3000);
+    })
+    </script>
+</body>
+</html>

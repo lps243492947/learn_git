@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>路径动画</title>
+</head>
+<body>
+  <svg width="120" height="120"
+   viewBox="0 0 120 120" 
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+   <path 
+    d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"
+    stroke="lightgrey"
+    stroke-width="2"
+    fill="none" id="theMotionPath"
+   />
+   <circle cx="10" cy="110" r="3" 
+   fill="lightgrey"/>
+   <circle cx="110" cy="10" r="3" 
+   fill="lightgrey"/>
+   <circle cx="0" cy="0" r="5" fill="black">
+     <animateMotion dur="3s" repeatCount="indefinite">
+       <mpath xlink:href="#theMotionPath"/>
+     </animateMotion>
+   </circle>
+  </svg>
+</body>
+</html>
