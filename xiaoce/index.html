@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小册</title>
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    .page {
+        /* 单屏应用 */
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    .box {
+        width: 120%;
+        height: 3000px;
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

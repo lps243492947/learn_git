@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .flex-con {
+        display: flex;
+        width: 500px;
+        height: 500px;
+        background-color: #efefef;
+    }
+    .box {
+        height: 200px;
+        background-color: yellow;
+        /* 父元素是弹性的，子元素是固定的，剩余的空间，超出 */
+        width: 200px;
+        flex-basis: 200px;
+    }
+    .box1 {/* flex: 1; flex-grow: 1;*/ flex-shrink: 1;} /* flex-grow 用来分配余下空间 */
+    .box2 {background-color: red;}
+    .box3 {background-color: green;}
+    </style>
+</head>
+<body>
+    <div class="flex-con">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+</body>
+</html>
