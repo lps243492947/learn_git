@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            overflow: hidden;
+            font: 100%/1.25 Helvetica, Arial;
+            color: #fff;
+            perspective: 1000px;
+            background-color: #444;
+            background-image: -webkit-gradient(linear, left top,
+                left bottom, from(#444), to(#999));
+            background-image: -webkit-linear-gradient(top, #444, #999);
+            background-image: linear-gradient(to bottom, #444, #999);
+        }
+
+        .book {
+            width: 300px;
+            height: 300px;
+            margin-top: -150px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: rotateX(60deg);
+            user-select: none;
+        }
+
+        .page {
+            width: 300px;
+            height: 300px;
+            padding: 1em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-indent: 2em;
+        }
+
+        .front {
+            background-color: #d93e2b;
+        }
+
+        .back {
+            background-color: #fff;
+        }
+
+        .front-cover {
+            cursor: move;
+            transform-origin: 0 50%;
+            transform: rotateY(0deg);
+        }
+
+        .front-cover .back {
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553581220215&di=91943b3c087faf6b86e0670ce7c0eb3d&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fsoft%2Fimages%2F2015%2F0301%2F20150301021016689.jpg);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            transform: translateZ(3px);
+        }
+
+        .back-cover .back {
+            transform: translateZ(-3px);
+        }
+
+        .p3d {
+            transform-style: preserve-3d;
+        }
+
+        .flip {
+            transform: rotateY(180deg);
+        }
+
+        .dino,
+        .shadow {
+            width: 196px;
+            height: 132px;
+            position: absolute;
+            left: 60px;
+            top: 60px;
+            transform-origin: 0 100%;
+        }
+
+        .dino {
+            background: url(./lb.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        .shadow {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="book p3d">
+        <div class="back-cover p3d">
+            <div class="page back flip"></div>
+            <div class="page front p3d">
+                <div class="shadow"></div>
+                <div class="dino"></div>
+            </div>
+        </div>
+        <div class="front-cover p3d">
+            <div class="page front flip p3d">
+                <p>各位工友、各位来宾：今天我们怀着十分沉痛的心情深切悼念一位优秀民工李斌同志。
+                    李斌同志于2019年3月26日晚上，途经青山湖经济技术开发区宁税路段时，驾驶的摩托车失控，不幸遇难。后经南昌中医院抢救无效身亡，享年21岁。
+                    李斌同志1999年6月10日出生于江西省上饶市一个农民家庭，自幻饱经苦难贫困生活的煎熬，仍坚强担起养家糊口的重任。李斌同志生前极负孝心，亦深爱自己的妻子，并且呕心沥血，终于培养出一双乖巧聪慧，人见人爱的好儿女。</p>
+            </div>
+            <div class="page back"></div>
+        </div>
+    </div>
+    <script>
+        (function (window, document) {
+            var prefixes = ['Webkit', 'Moz', 'ms', 'o', ''],
+                book = document.querySelectorAll('.book')[0],
+                page = document.querySelectorAll('.front-cover')[0],
+                dino = document.querySelectorAll('.dino')[0],
+                shadow = document.querySelectorAll('.shadow')[0],
+                hold = false,
+                centerPoint = window.innerWidth / 2,
+                pageSize = 300,
+                clamp = function (val, min, max) {
+                    return Math.max(min, Math.min(val, max));
+                };
+            // 按下⿏标时候的执⾏事件
+            page.onmousedown = function () {
+                hold = true;
+            };
+            // 放开⿏标的时候执⾏的事件
+            window.onmouseup = function () {
+                if (hold) {
+                    hold = false;
+                }
+            };
+            // 在窗⼝被调整⼤⼩的时候执⾏的事件
+            window.onresize = function () {
+                centerPoint = window.innerWidth / 2;
+            };
+            // ⿏标移动时候执⾏的事件
+            window.onmousemove = function (evt) {
+                if (!hold) {
+                    return
+                }
+                var angle = clamp((centerPoint - evt.pageX +
+                    pageSize) / pageSize * -90, -180, 0), i, j;
+                for (i = 0, j = prefixes.length; i < j; i++) {
+                    book.style[prefixes[i] + 'Transform'] = 'rotateX(' + (60 + angle / 8) + 'deg)';
+                    page.style[prefixes[i] + 'Transform'] = 'rotateY(' + angle + 'deg)';
+                    dino.style[prefixes[i] + 'Transform'] = 'rotateX(' + (angle / 2) + 'deg)';
+                    shadow.style[prefixes[i] + 'Transform'] = 'translateZ(1px) skewX(' + (angle / 8) + 'deg)';
+                }
+            }
+        })(window, document);
+    </script>
+</body>
+
+</html>
