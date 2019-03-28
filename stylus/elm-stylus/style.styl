@@ -1,0 +1,46 @@
+html,body 
+    margin 0
+    padding 0
+    line-height 1
+    font-weight 200
+    font-family 'PingFang SC','STHeitiSC-Light','Helvetica-Light'
+
+.clearfix
+    display inline-block
+    &:after
+        display block
+        content ''
+        clear both
+
+bg-image($url)
+    background-image: url($url + '@2x.png')
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+        background-image url($url + '@3x.png')
+
+.header
+    position relative
+    overflow hidden
+    color #ffffff
+    background rgba(7,17,27,0.5)
+    .content-wrapper
+        position relative
+        padding 24px 12px 18px 24px
+        font-size 0
+        .avatar
+            display inline-block
+            vertical-align top
+            img
+                border-radius 2px
+        .content
+            display inline-block
+            margin-left 16px
+            .title
+                margin  2px 0 8px 0
+                .brand
+                    display inline-block
+                    vertical-align top
+                    width 30px
+                    height 18px
+                    bg-image('brand')
+                    background-size 30px 18px
+                    background-repeat no-repeat

@@ -1,0 +1,55 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 200;
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light';
+}
+.clearfix {
+  display: inline-block;
+}
+.clearfix:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+.header {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: rgba(7,17,27,0.5);
+}
+.header .content-wrapper {
+  position: relative;
+  padding: 24px 12px 18px 24px;
+  font-size: 0;
+}
+.header .content-wrapper .avatar {
+  display: inline-block;
+  vertical-align: top;
+}
+.header .content-wrapper .avatar img {
+  border-radius: 2px;
+}
+.header .content-wrapper .content {
+  display: inline-block;
+  margin-left: 16px;
+}
+.header .content-wrapper .content .title {
+  margin: 2px 0 8px 0;
+}
+.header .content-wrapper .content .title .brand {
+  display: inline-block;
+  vertical-align: top;
+  width: 30px;
+  height: 18px;
+  background-image: url("brand@2x.png");
+  background-size: 30px 18px;
+  background-repeat: no-repeat;
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  .header .content-wrapper .content .title .brand {
+    background-image: url("brand@3x.png");
+  }
+}
