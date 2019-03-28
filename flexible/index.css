@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+.page {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    padding: 0.13333333333333333333333333rem;
+    box-sizing: border-box;
+}
+.list li {
+    padding: 0.1866rem 0;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.pic {
+    width: 2.34667rem;
+    height: 2.34667rem;
+    float: left;
+}
+.pic img {
+    width: 100%;
+}
+.desc {
+    padding-left: 0.2133rem;
+    overflow: hidden;
+}
+.title {
+    width: 80%;
+    font-size: 16px;
+    line-height: 1;
+}
+.get-btn {
+    position: absolute;
+    right: 0.25333rem;
+    bottom: 0.2rem;
+    width: 2.1333333rem;
+    height: 0.64rem;
+    line-height: 0.64rem;
+    background-color: #f5294c;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+}
