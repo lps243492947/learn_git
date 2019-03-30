@@ -1,0 +1,90 @@
+random(min,max)
+  return floor(math(0, 'random')*(max - min + 1) + min)
+html, body
+    height 100%
+    background-color #000000
+    overflow hidden
+.lb
+    color #fff
+    font-size 20px
+.g-candle
+    position absolute
+    width 400px
+    height 400px
+    .sb
+        position absolute
+        left 195px
+        width 100px
+        height 100px
+    .g-body
+        position relative
+        width 100px
+        height 300px
+        margin 280px auto
+        background linear-gradient(230deg, #ca9800, #573903, black 70%)
+        z-index 1
+        &:before
+            position absolute
+            content ""
+            width 100px
+            height 40px
+            border-radius 50%
+            top -20px
+            background radial-gradient(#a46800, #5c2104 45%, #905602 100%)
+        &:after
+            content ""
+            position absolute
+            width 4px
+            height 48px
+            left 50%
+            top -22px
+            transform translate(-50%,-50%)
+            background linear-gradient(180deg, rgba(0,0,0,.3) 0%,rgba(0,0,0,.8) 60%, #fff)
+            opacity .7
+            filter blur(1px)
+    .g-fire-box
+        position absolute
+        top 97px
+        left 50%
+        width 80px
+        height 200px
+        transform translate(-50%,-50%)
+        filter blur(2px) contrast(15)
+        .g-fire
+            position absolute
+            top 30px
+            left 25%
+            border-radius 45%
+            border 120px solid black
+            background-color #761b00 
+            border-bottom-color transparent
+            transform translate(-50%,0) scaleX(.45)
+            .g-ball
+                position absolute
+                top 60px
+                transform translate(0,0)
+                background #fa8763
+                border-radius 50%
+                z-index -1
+                mix-blend-mode screen   // 背景融合
+for num in 1..200
+    .g-ball:nth-child({num})
+        $width = random(0, 50)
+        $left = random(0,70)
+        $delay = random(0, 3000)/1000
+        width unit($width, 'px')
+        height unit($width, 'px')
+        left unit($left, 'px')
+        animation movetop 1s linear unit(0 - $delay, 's') infinite
+
+@keyframes movetop 
+    0% 
+        transform translate(0,0)
+    20%
+        transform translate(0,0)
+    87.7%
+        transform translate(0,-170px)
+    100%
+        transform translate(0,-170px)
+        opacity 0
+
