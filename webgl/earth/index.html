@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebGL 大厂入职利器</title>
+</head>
+<body>
+  <!-- 绘图容器 2D  webgl 提到3D js API画图  -->
+  <canvas id="webglcanvas"></canvas>
+  <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  <script>
+  var canvas, /*放映机*/
+    camera, /*照相机 perspective*/
+    scene /*场景*/,
+    group,
+    renderer; /*组合*/
+  var mouseX = 0,
+    mouseY = 0;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+  init();
+  animate();
+  function init() {
+    canvas = document.getElementById('webglcanvas');
+    // 世界是不变的Scene, 怎么拍，会拍出不一样的  角度 60 怎么拿相机 横，竖比例，
+    // 近面， 最远端 
+    // 3D世界
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 2000)
+    camera.position.z = 500;
+
+    // 场景
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xffffff);
+    group = new THREE.Group();
+    scene.add(group);
+
+    // 形状 +  材质 = 真实物体 
+    // 地球
+    var loader = new THREE.TextureLoader();
+    loader.load('earth.jpg', function(texture) {
+      var geometry = new THREE.SphereGeometry(200, 20, 20);
+      var material = new THREE.MeshBasicMaterial({map: texture})
+      var mesh = new THREE.Mesh(geometry, material);
+      group.add(mesh);
+    })
+
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true //抗锯齿
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    document.addEventListener('mousemove',onDocumentMouseMove,false)
+  }
+
+  function onDocumentMouseMove(event) {
+      mouseX = (event.clientX - windowHalfX)
+      mouseY = (event.clientY - windowHalfY)
+      
+  }
+  function animate() {
+    // 请求浏览器每秒拍60张
+    requestAnimationFrame(animate);
+    render();
+  }
+  function render() {
+    camera.position.x += (mouseX - camera.position.x)*0.05; 
+    camera.position.y += (-mouseY-camera.position.y)*0.05;
+    camera.lookAt(scene.position)
+    group.rotation.y -= 0.005;
+    renderer.render(scene, camera);
+  }
+  </script>
+</body>
+</html>
