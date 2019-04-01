@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [1, 2, 3, 4];
+        const sum = arr.reduce(function(acc, cur, idx, src) {
+            console.log(acc, cur, idx, src);
+            // acc 上一次 return 的值
+            // cur 当前遍历的值
+            return acc + cur;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+$bgi = 'https://images.unsplash.com/photo-1440613905118-99b921706b5c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=255b304482a2f50d0917f3de7b06251e'
+*
+    margin 0
+    padding 0
+html, body
+    width 100%
+    height 100%
+.page
+    width 100%
+    height 100%
+    background-image url($bgi)
+    background-repeat no-repeat
+    background-size auto 100%
+    overflow hidden
+.page_hd
+    width 1.866667rem /* 70/37.5 */
+    height .5555rem;
+    color #ffffff;
+    font-size .462962rem;
+    margin 2.96rem auto;
+.page_content
+    position relative
+    margin-top 2.5925rem
+.page_content_number
+    width 6.96rem
+    display flex
+    margin-left 1.45rem
+.number
+    width 1.62rem
+    height 1.62rem
+    color #e8ffff
+    font-weight 100
+    text-align center
+    border-radius 50%
+    border 2px solid #81969c
+    font-size 25px
+    line-height 1.62rem
+    margin-bottom .72rem
+.numberleft, .numbermid
+    margin-right 1.03rem
+.page_foot
+    position relative
+    display flex
+    width 100%
+    padding-top .59rem
+    margin-bottom .259259rem
+.page_font
+    color rgba(255, 255, 255, .5)
+    font-size .444rem
+.page_foot__left
+    @extend .page_font
+    margin-left .25rem
+    flex 1
+.page_foot__right
+    @extend .page_font
+    width 1.88rem
+
+    

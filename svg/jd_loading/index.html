@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .mouth {
+        stroke-dasharray: 60, 95;
+        stroke-dashoffset: 0;
+        transform-origin: 50px 70px;
+        transform: rotate(-80deg);
+        animation: mouth 0.8s linear infinite;
+    }
+    @keyframes mouth {
+        0% {
+            transform: rotate(-80deg);
+            stroke-dasharray: 60, 95;
+            stroke-dashoffset: 0;
+        }
+        40% {
+            transform: rotate(280deg);
+            stroke-dasharray: 60, 95;
+            stroke-dashoffset: 0;
+        }
+        70%, 100% {
+            transform: rotate(280deg);
+            stroke-dasharray: 42, 95;
+            stroke-dashoffset: -23;
+        }
+    }
+    </style>
+</head>
+<body>
+    <svg id="ani" width="200" height="200" viewBox="0 0 100 100">
+        <path d="M 20 40 L 80 40 L 80 90 A 10 10 90 0 1 70 100 L 30 100 A 10 10 90 0 1 20 90" style="fill:#e9e8ee"></path>
+        <path d="M 35 40 A 15 15 180 1 1 65 40" style="fill:none;stroke:#e9e8ee;stroke-width:5;"/>
+        <circle class="mouth" cx="50" cy="70" r="15" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;"/>
+        <circle class="eye" r="2.5" style="fill:#fff">
+            <animateMotion dur="0.8s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.4;0.8;1" calcMode="linear">
+                <mpath xlink:href="#eyeright"/>
+            </animateMotion>
+        </circle>
+        <circle class="eye" r="2.5" style="fill:#fff">
+            <animateMotion dur="0.8s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.3;0.9;1" calcMode="linear">
+                <mpath xlink:href="#eyeleft"/>
+            </animateMotion>
+        </circle>
+        <path id="eyeright" d="M 40 60 A 15 15 180 0 1 60 60" style="fill:none;stroke-width: 0;"/>
+        <path id="eyeleft" d="M 35 70 A 15 15 180 0 1 40 60" style="fill:none;stroke-width: 0;"/>
+    </svg>
+</body>
+</html>
