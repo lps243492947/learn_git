@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+    <link href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .lists li {
+            line-height: 2.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 下拉刷新 -->
+        <div class="weui-pull-to-refresh__layer">
+            <div class="weui-pull-to-refresh__arrow"></div>
+            <div class="weui-pull-to-refresh__preloader"></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+        </div>
+        <div class="list">
+            <div class="lists">
+                <li>豆瓣电影Top20</li>
+            </div>
+        </div>
+        <!-- 加载更多 -->
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+    </div>
+    <script>
+        (function(){
+            $.ajax({
+                url:'https://api.douban.com/v2/movie/top250',
+                type: 'get',
+                timeout:'5000',
+                dataType:'jsonp',
+                success:function(response){
+                    // console.log(response);
+                    for (let n of response.subjects) {
+                        $('.lists').append(`<li>${n.title}`);
+                    }
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+            $('.page').pullToRefresh(function(){
+                console.log('下拉刷新');
+                setTimeout(() => {
+                    $('.page').pullToRefreshDone()
+                },1500);
+            })
+            $('.page').infinite().on('infinite',function(){
+                var loading = false;
+                if(loading) {
+                    return;
+                }
+                $('weui-loadmore').show();
+                loading = true;
+                setTimeout(() => {
+                    $('.lists').append('<li>这是一条新数据');
+                    loading = false;
+                },1500)
+            })
+        })()
+    </script>
+</body>
+</html>
