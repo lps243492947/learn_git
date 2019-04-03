@@ -1,0 +1,73 @@
+@import "./reset"
+$cols = 12 // 定义栅格数
+$query = {
+  sm: {
+    query: 'min-width: 576px',
+    containerWidth: 540
+  },
+  md: {
+    query: 'min-width: 768px',
+    containerWidth: 720
+  },
+  lg: {
+    query: 'min-width: 992px',
+    containerWidth: 960
+  },
+  xl: {
+    query: 'min-width: 1200px',
+    containerWidth: 1140
+  }
+}
+
+// 移动设备优先
+.container
+    margin-left auto
+    margin-right auto
+    padding-left 15px
+    padding-right 15px
+.row
+    display flex
+    flex-wrap nowrap
+    margin-left -15px
+    margin-right -15px
+// 12 份栅格 100%
+.col-1
+    width 8.333333333333%
+.col-2
+    width 16.66666666666%
+.col-3
+    width 25%
+for $v in 1..$cols
+    .col-{$v}
+        width (100/ 12 * $v)%
+for $k, $v in $query
+  @media only screen and ({$v.query})
+    .container
+      width unit($v['containerWidth'], px)
+    for $v in 1..$cols
+      .col-{$k}-{$v}
+        width (100 / 12 * $v)%
+// @media only screen and (min-width 576px) 
+//     .container
+//         width 540px
+//     for $v in 1..$cols
+//      .col-sm-{$v}
+//         width (100/ 12 * $v)%
+// @media only screen and (min-width 768)
+//     .container
+//         width 720px
+//     for $v in 1..$cols
+//      .col-md-{$v}
+//         width (100/ 12 * $v)%
+// @media only screen and (min-width 992)
+//     .container
+//         width 960px
+//     for $v in 1..$cols
+//      .col-lg-{$v}
+//         width (100/ 12 * $v)%
+// @media only screen and (min-width 1200)
+//     .container
+//         width 1140px
+//     for $v in 1..$cols
+//      .col-xl-{$v}
+//         width (100/ 12 * $v)%
