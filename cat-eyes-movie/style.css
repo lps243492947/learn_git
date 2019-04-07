@@ -1,0 +1,158 @@
+html,
+body {
+  width: 100%;
+}
+.public {
+  color: #aaa59f;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.nav {
+  height: 1.067rem;
+  font-size: 18px;
+  background-color: #e54847;
+  padding: 6px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.nav .arrow-left {
+  float: left;
+  height: 100%;
+  position: relative;
+}
+.nav .arrow-left:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  border: 2px solid #fff;
+  border-width: 0 0 2px 2px;
+  box-sizing: border-box;
+  transform: rotate(45deg) translateY(-50%);
+}
+.nav span {
+  color: #fff;
+  display: inline-block;
+}
+.page {
+  background-color: #f4f4f4;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #555;
+  min-width: 3.1rem;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  font: 14px/1.5 Arial, Helvetica, sans-serif;
+}
+.page section {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.page .movie-header {
+  border-bottom: none;
+  padding: 0;
+  background: #f8f8f8;
+}
+.page .movie-header .movie {
+  color: #fff;
+  padding: 0.4rem;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  filter: blur(0);
+}
+.page .movie-header .movie .movie-background,
+.page .movie-header .movie .movie-filter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.page .movie-header .movie .movie-background {
+  z-index: 0;
+  filter: blur(0.6rem);
+  background-image: url("./image/header-bg.jpg");
+  background-size: cover;
+  background-position-y: 40%;
+  background-repeat: no-repeat;
+}
+.page .movie-header .movie .movie-filter {
+  background-color: #40454d;
+  opacity: 0.55;
+}
+.page .movie-header .movie .movie-container {
+  z-index: 1;
+  position: relative;
+}
+.page .movie-header .movie .movie-container .movie-cover {
+  float: left;
+  width: 2.854rem;
+  height: 4rem;
+  border: 1px solid #f0f2f3;
+  position: relative;
+}
+.page .movie-header .movie .movie-container .movie-cover:after {
+  content: '';
+  position: absolute;
+  right: 0.1rem;
+  bottom: 0.1rem;
+  width: 0.667rem;
+  height: 0.667rem;
+  background-image: url("./image/bofang.png");
+  background-size: 100% auto;
+  border-radius: 100%;
+  opacity: 0.7;
+}
+.page .movie-header .movie .movie-container .movie-cover .link {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.page .movie-header .movie .movie-container .movie-cover .link .image {
+  width: 100%;
+}
+.page .movie-header .movie .movie-container .movie-content {
+  overflow: hidden;
+  padding-left: 0.4rem;
+}
+.page .movie-header .movie .movie-container .movie-content .movie-name {
+  font-size: 17px;
+  margin: 0.08rem 0;
+}
+.page .movie-header .movie .movie-container .movie-content .movie-ename {
+  font-size: 12px;
+  margin-bottom: 0.2rem;
+}
+.page .movie-header .movie .movie-container .movie-content .move-score {
+  font-size: 12px;
+  margin-bottom: 0.3rem;
+}
+.page .movie-header .movie .movie-container .movie-content .score-num {
+  padding-bottom: 13px;
+  color: #aaa59f;
+}
+.page .movie-header .movie .movie-container .movie-content .img {
+  width: 0.48rem;
+  height: 0.48rem;
+  margin-right: 2px;
+}
+.page .movie-header .movie .movie-container .movie-content .rating-score {
+  font-size: 0.48rem;
+  color: #ffc600;
+}
+.introduction {
+  font-size: 16px;
+  color: #000;
+  font-weight: 550;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="nav">
+        <i class="arrow-left"></i>
+        <span>影片详情</span>
+    </header>
+    <div class="page">
+        <section class="movie-header">
+            <div class="movie">
+                <div class="movie-background"></div>
+                <div class="movie-filter"></div>
+                <div class="movie-container">
+                    <div class="movie-cover">
+                        <a href="#" class="link">
+                            <img class="image" src="" alt="" id="moviePic">
+                        </a>
+                    </div>
+                    <!-- detail -->
+                    <div class="movie-content">
+                        <div class="movie-name">
+                            <span></span>
+                        </div>
+                        <div class="movie-ename">
+                            <span></span>
+                        </div>
+                        <!-- star -->
+                        <div class="movie-score">
+                            <div class="released-score">
+                                <div class="rating" id="rating">
+                                    <span class="rating-score"></span>
+                                </div>
+                                <div class="score-num public">
+                                    (<span></span>人评)
+                                </div>
+                                <div class="genre public">
+                                    <span></span>
+                                </div>
+                                <div class="where public">
+                                    <span id="one"></span>/ <span id="two"></span>分钟
+                                </div>
+                                </div>
+                                <div class="release public">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="introduction">
+        <span></span>
+    </div>
+    <script>
+        (function() {
+            $.ajax({
+                url: 'https://www.easy-mock.com/mock/5ca495cdea0dc52bf3b67fcf/',
+                type: 'get',
+                success:function(res) {
+                    console.log(res)
+                    $('#moviePic').attr('src', res.data.moviePic)
+                    $('.movie-content .movie-name span').html(res.data.name)
+                    $('.movie-content .movie-ename span').html(res.data.nameEnglish)
+                    star(res.data.star)
+                    $('.rating-score').html(res.data.grade)
+                    $('.score-num span').html(res.data.people)
+                    $('.genre span').html(res.data.type)
+                    $('#one').html(res.data.where)
+                    $('#two').html(res.data.time)
+                    $('.release span').html(res.data.date)
+                    $('.introduction span').html(res.data.desc)
+                }
+            })
+            function star(e) {
+                let num = Math.floor(e)
+                if (e > num) {
+                    $('#rating').prepend('<img class="img" src="./image/star-h.png">')
+                }
+                for (let i = 0; i < num; i++) {
+                    $('#rating').prepend('<img class="img" src="./image/star.png">')
+                }
+            }   
+        })()
+    </script>
+</body>
+</html>
