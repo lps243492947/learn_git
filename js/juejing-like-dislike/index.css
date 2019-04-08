@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 12px;
+}
+body {
+    font-size: 12px;
+}
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+.item {
+    margin-top: 40px;
+    border: 1px solid #edeeef;
+    color: #b2bac2;
+    font-size: 1.083rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    max-width: 80px;
+    justify-content: center;
+    cursor: pointer;
+}
+.count {
+    margin-left: .2em;
+}
+.count.active {
+    color: #6cbd45;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>掘金 点赞 取消点赞</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+                <img class="icon" src="https://b-gold-cdn.xitu.io/v3/static/img/zan.e9d7698.svg" alt="">
+                <span class="count">98</span>
+        </div>
+    </div>
+    <script>
+        const item = document.querySelector('.item');
+        const icon = document.querySelector('.icon');
+        const count = document.querySelector('.conunt');
+        const like = 'https://b-gold-cdn.xitu.io/v3/static/img/zan-active.930baa2.svg';
+        const dislike = 'https://b-gold-cdn.xitu.io/v3/static/img/zan.e9d7698.svg';
+        let flag = false;
+        item.addEventListener('click', () => {
+            let countNum = count.innerHTML;
+            countNum = parseInt(countNum); 
+            if (flag) {
+                icon.src = dislike;
+                countNum -= 1;
+                // count.classList.remove('active');
+            } else {
+                icon.src = like;
+                countNum += 1;
+                // count.classList.add('active');
+            }
+            count.classList.toggle('active');
+            count.innerHTML = countNum;
+            flag = !flag;
+        })
+    </script>
+</body>
+</html>
