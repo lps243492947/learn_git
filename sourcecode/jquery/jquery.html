@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script> -->
+    <script>
+    // jquery太好用了，兼容性 抹平了浏览器间的差异 + 快
+    // js 里函数可以作为参数，高阶函数
+    function $(selector) {
+        // DOM Ready事件
+        // 查找元素
+        if(typeof selector === "string") {
+
+        }else if (typeof selector === "function") {
+            document.addEventListener('DOMContentLoaded', selector,false);
+        }
+    } 
+    $(function() {
+        console.log('DOM READY');
+        $('#root').html('<h1>旅梦有喜事！！<h1>')
+    })    
+    </script>
+</body>
+</html>
