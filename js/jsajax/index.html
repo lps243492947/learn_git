@@ -20,12 +20,35 @@
       xhr.send()
     //   console.log(xhr.responseText)
     //   console.log(xhr.readyState, xhr.status)
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText)
-          }
+      var p = new Promise((resolve,reject) => {
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+              console.log(xhr.responseText)
+              resolve(xhr.responseText);
+            }
+        }
+      })
+      function xq() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("猛哥要去相亲了");
+            resolve('你结个🔨婚');
+          },1000)
+        })
       }
-      console.log(1232423)
+      // xq();
+      function marry() {
+        setTimeout(() => {
+          console.log('猛哥结婚了！');
+        },500)
+      }
+      
+      p
+        .then(xq)
+        .then(marry)
+        .catch(() => {
+          console.log('猛哥出家了');
+        })
     </script>
 </body>
 </html>
