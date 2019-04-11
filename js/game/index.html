@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/phaser/2.6.2/phaser.min.js"></script>
+</head>
+<body>
+    <div id="game"></div>
+    <script>
+        // var Phaser = {};
+        // Phaser.Game = function() {}
+        // game 就是一个对象
+        var width = 800, height = 600;
+        var game = new Phaser.Game(width, height, Phaser.AUTO, '#game', {preload:preload, create:create, update:update});
+        // - 加载资源
+        function preload() {
+            game.load.image('lazur','./moon.png');
+            game.load.spritesheet('mummy','./zombie.png', 37, 45, 18);
+        }
+        var back, mummu, anim, loopText;
+        function create() {
+            // 背景，精灵到位，动起来
+            back = game.add.image(0, -400, 'lazur');
+            back.scale.set(2);
+            back.smoothed = false;
+            mummy = game.add.sprite(50, 300, 'mummy', 10);
+            mummy.scale.set(4);
+            mummy.smoothed = false;
+            anim = mummy.animations.add('walk');
+            anim.onStart.add(animationsStarted, this);
+            anim.onLoop.add(animationsLooped, this);
+            anim.onComplete.add(animationsStopped, this);
+            anim.play(10, true);
+        }
+        function animationsLooped(sprite, animation) {
+            if(animation.loopCoount === 1) {
+                loopText = game.add.text(32, 64, 'Animation looped', {fill:'white'});
+            } else {
+                animation.loop = false;
+            }
+        }
+        function animationsStopped(sprite, animation) {
+
+        }
+        function animationsStarted(sprite, animation) {
+            game.add.text(32, 32, 'Animationstarted', {fill: 'white'})
+        }
+        function update() {
+            if (anim.isPlaying) {
+                back.x -=1;
+            }
+        }
+    </script>
+</body>
+</html>
