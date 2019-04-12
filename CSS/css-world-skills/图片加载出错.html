@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+    img {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    img::after {
+        /* attr 表达式 获取元素上的属性 */
+        content: attr(alt);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, .5);
+        transform: translateY(100%);
+        opacity: 0;
+        transition: all 1s;
+    }
+    img:hover::after {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./photo.png" alt="图片加载出错了" title="这是一张图片">
+    </div>
+</body>
+</html>
