@@ -128,6 +128,60 @@
         </li> -->
       </ul>
     </section>
+    <!-- section6 -->
+    <section class="section-seperate section-expander">
+      <p class="section-till pos_r">讨论
+        <span class="join-comment">参与讨论</span>
+      </p>
+      <ul class="movie-comment">
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>全部</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>好评</span>
+            <span class="comment-item__num good"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>差评</span>
+            <span class="comment-item__num bad"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>点映</span>
+            <span class="comment-item__num dy"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>购票</span>
+            <span class="comment-item__num bought"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>认证作者</span>
+            <span class="comment-item__num author"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>同城</span>
+            <span class="comment-item__num sameCity"></span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!-- section7 -->
+    <section class="section-seperate section-expander">
+      <p class="section-till">精选</p>
+    </section>
     <!-- toast -->
     <div id="toast">
       <div class="weui-mask_transparent"></div>
@@ -155,6 +209,12 @@
               $('.address-time .time').html(res.data.time)
               $('.movie-detail .date').html(res.data.date)
               $('.text-expander__content p').html(res.data.desc)
+              $('.comment-item__sort .good').html(res.data.commentNum.good)
+              $('.comment-item__sort .bad').html(res.data.commentNum.bad)
+              $('.comment-item__sort .dy').html(res.data.commentNum.dy)
+              $('.comment-item__sort .bought').html(res.data.commentNum.bought)
+              $('.comment-item__sort .author').html(res.data.commentNum.author)
+              $('.comment-item__sort .sameCity').html(res.data.commentNum.sameCity)
               celebrity(res.data.person)
               booking(res.data.booking)
               photo(res.data.pictures)
