@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="gameCanvas" width="300" height="300"></canvas>
+  <script>
+  const CANVAS_BACKGROUND_COLOR = 'white'; // 代码可读性
+  const CANVAS_BORDER_COLOR = 'black';
+  let snake = [
+    { x: 150, y: 150},
+    { x: 140, y: 150},
+    { x: 130, y: 150},
+    { x: 120, y: 150},
+    { x: 110, y: 150}
+  ];
+  let dx = 10, dy = 0;
+
+  const gameCanvas = document.getElementById('gameCanvas');
+  const ctx = gameCanvas.getContext('2d');
+  clearCanvas();//每次重置画布
+  // 画蛇
+  drawSnake();
+  setInterval(() => {
+    advanceSnake();
+    clearCanvas();
+    drawSnake();
+  }, 100)
+  // dx = 0;
+  // dy = 10;
+  // advanceSnake();
+  // clearCanvas();
+  // drawSnake();
+  // ? 
+  function advanceSnake() {
+    const head = {x: snake[0].x + dx,
+    y: snake[0].y + dy};
+    snake.unshift(head);
+    snake.pop();
+
+  }
+
+  function drawSnake() {
+    snake.forEach(drawSnakePart);
+  }
+  function drawSnakePart(part) {
+    ctx.fillStyle = 'lightgreen';
+    ctx.strokeStyle = 'darkgreen';
+    ctx.fillRect(part.x, part.y, 10, 10);
+    ctx.strokeRect(part.x, part.y, 10, 10);
+  }
+
+  function clearCanvas() {
+    ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+    ctx.strokeStyle = CANVAS_BORDER_COLOR;
+    ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+    ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+  }
+
+  function changeDirection(event) {
+    const keyCode = event.keyCode;
+    const LEFT_KEY = 37;
+    const RIGHT_KEY = 39;
+    const UP_KEY = 38;
+    const DOWN_KEY = 40;
+    const goingRiht = dx === 10;
+    const goingLeft = dx === -10;
+    const goingUp = dy === -10;
+    const goingDown = dy === 10;
+    if (keyCode === LEFT_KEY && !goingRiht) {
+      dx = -10;
+      dy = 0;
+    }
+    if (keyCode === RIGHT_KEY && !goingLeft) {
+      dx = 10;
+      dy = 0;
+    }
+    if (keyCode === DOWN_KEY && !goingUp) {
+      dx = 0;
+      dy = 10;
+    }
+    if (keyCode === UP_KEY && !goingDown) {
+      dx = 0;
+      dy = -10;
+    }
+  }
+
+  document.addEventListener('keydown', changeDirection);
+
+  </script>
+</body>
+</html>

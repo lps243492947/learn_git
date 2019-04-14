@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="wrapBg">
+        <!-- 头部 -->
+        <div id="headTitle">
+            <img src="./img/bird0.png" alt="小鸟" id="headBird">
+        </div>
+        <!-- 开始按钮 -->
+        <button id="startBtn"></button>
+        <!-- 草地 -->
+        <div id="grassLand1"></div>
+        <div id="grassLand2"></div>
+    </div>
+    <script src="./js/baseObj.js"></script>
+    <script src="./js/bird.js"></script>
+    <script>
+        var jsWrapBg = document.getElementById('wrapBg');
+        var jsHeadTitle = document.getElementById('headTitle');
+        var jsHeadBird = document.getElementById('headBird');
+
+        // 标题动画
+        var y = 3, index = 0,imgArr = ['img/bird0.png','img/bird1.png']
+        function headWave() {
+            y *= -1; // y = y * -1
+            jsHeadTitle.style.top = jsHeadTitle.offsetTop + y + 'px';
+            jsHeadBird.src = imgArr[index++];
+            if(index == 2) {
+                index = 0
+            }
+        }
+        var headWave = setInterval(headWave, 200);
+        // 草地动画
+        var jsGrassLand1 = document.getElementById('grassLand1');
+        var jsGrassLand2 = document.getElementById('grassLand2');
+        function landRun() {
+            if(jsGrassLand1.offsetLeft <= -343) {
+                jsGrassLand1.style.left = "343px";
+            }
+            if(jsGrassLand2.offsetLeft <= -343) {
+                jsGrassLand2.style.left = "343px";
+            }
+            jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + 'px';
+            jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + 'px';
+        }
+        var landRun = setInterval(landRun, 30);
+        // 点击开始按钮
+        var jsStartBtn = document.getElementById('startBtn');
+        jsStartBtn.onclick = function() {
+            jsHeadTitle.style.display = "none";
+            clearInterval(headWave);
+            jsStartBtn.style.display = "none";
+            // 小鸟登场
+            bird.showBird(jsWrapBg)
+            bird.flyBird();
+            bird.wingWave();
+        }
+    </script>
+</body>
+</html>
