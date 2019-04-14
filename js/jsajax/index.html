@@ -42,13 +42,19 @@
           console.log('猛哥结婚了！');
         },500)
       }
-      
-      p
-        .then(xq)
-        .then(marry)
-        .catch(() => {
-          console.log('猛哥出家了');
-        })
+      function child() {
+        console.log('猛哥生娃了！');
+      }
+      // p
+      //   .then(xq)
+      //   .then(marry)
+      //   .catch(() => {
+      //     console.log('猛哥出家了');
+      //   })
+      Promise.all([p, xq(), marry()]).then(child) // all方法
+      // Promise.race([p, xq(), marry()]).then((value) => {
+      //   console.log(value)
+      // })
     </script>
 </body>
 </html>
