@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <button onclick="getaddress()">我在哪</button>
+    </p>
+    <div id="out"></div>
+    <script>
+    var latitude
+    var longitude
+    function getaddress() {
+        var out = document.getElementById('out')
+        if(!navigator.geolocation) {
+            out.innerHTML = '你的浏览器不支持获取地理位置'
+            return;
+        }
+        function success(position) {
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
+            out.innerHTML = '<p>你的纬度:' + latitude + '<br/> 你的经度:' + longitude + '</p>' 
+        }
+        function error() {
+            out.innerHTML = '无法获取你的当前位置'
+        }
+        out.innerHTML = '<p>loading...</p>'
+        navigator.geolocation.getCurrentPosition(success, error)
+    }
+    </script>
+</body>
+</html>

@@ -341,6 +341,67 @@ body {
 .page .movie-comment .comment-item .comment-item__sort span {
   font-size: 14px;
 }
+.page .chosen-comment__item .item-avatal {
+  float: left;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.page .chosen-comment__item .item-avatal img {
+  width: 100%;
+}
+.page .chosen-comment__item .item-detail {
+  overflow: hidden;
+  padding-left: 0.3rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.4rem;
+}
+.page .chosen-comment__item .item-detail__hd div span {
+  vertical-align: middle;
+}
+.page .chosen-comment__item .item-detail__hd div .level {
+  display: inline-block;
+  width: 0.9735rem;
+  height: 0.4534rem;
+}
+.page .chosen-comment__item .item-detail__hd div .level img {
+  width: 100%;
+}
+.page .chosen-comment__item .item-detail__hd div .item-score__desc {
+  color: #9b9b9b;
+  font-size: 12px;
+}
+.page .chosen-comment__item .item-detail .item-detail__content {
+  margin: 0.15rem 0;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer {
+  margin-top: 0.4rem;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .item-detail__time {
+  color: #9b9b9b;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right {
+  float: right;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link {
+  color: #757575;
+  border: 1px solid #eee;
+  margin-left: 0.3rem;
+  padding: 0.12rem 0.3rem 0.16rem;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link .icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link span {
+  vertical-align: middle;
+}
 #toast {
   display: none;
 }
