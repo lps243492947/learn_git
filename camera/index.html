@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>camera</title>
+    <style>
+    .btn-container {
+    position: fixed;
+    transform: translate(-50%, 0);
+    left: 50%;
+    width: 10rem;
+    height: 2rem;
+    bottom: 10px;
+  }
+  .btn {
+    height: 100%;
+    background-color: green;
+    color: white;
+    /* margin-right: 10px; */
+  }
+    </style>
+</head>
+<body>
+    <!-- 将来自摄像头 -->
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+    <div class="btn-container"><button class="btn" id="photo">拍照</button></div>
+    <script>
+    const videoConstraints = {width: 1366,height: 768}
+    const videoNode = document.querySelector('#video');
+    let s;
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = videoConstraints.width;
+    canvas.height = videoConstraints.height;
+    // img add canvas drawImage()
+    // 摄像头/声音 BOM
+    navigator.getUserMedia({
+        audio: true,
+        video: videoConstraints
+        // 视频流
+    },function(stream) {
+        s = stream;
+        videoNode.srcObject = stream;
+    },function(error) {
+        console.log(error);
+    })
+    function download(src) {
+        if(!src) return;
+        const a = document.createElement('a');
+        a.setAttribute('download', new Date());
+        a.href = src;
+        a.click();
+    }
+    document
+        .querySelector('#photo')
+        .addEventListener('click',function(event) {
+            event.preventDefault();
+            // canvas抓屏
+            context.drawImage(videoNode, 0, 0, canvas.width, canvas.height);
+            // 自动下载的做法
+            // URL下载的地址
+            download(canvas.toDataURL('image/jpeg'));
+        });
+    </script>
+</body>
+</html>
