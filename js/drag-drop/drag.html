@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 5px solid greenyellow;
+      }
+      img {
+          width: 100%;
+          height: 100%;
+      }
+      .box:last-child {
+          margin-top: 30px;
+      }
+    </style>
+</head>
+<body>
+    <div class="box" id="box1" draggable="true">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556018594&di=5e117c0004f9ce1b9c8d5026e1ca29ae&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.zhimg.com%2F50%2Fv2-6d755ab02dac9c0e918858287bf0326f_hd.jpg" alt="">
+    </div>
+    <div class="box" id="box2" draggable="true">
+        <img src="http://ppsm0t3x8.bkt.clouddn.com/wonniu.jpg" alt="">
+    </div>
+    <script>
+        const box1 = document.getElementById('box1')
+        const box2 = document.getElementById('box2')
+        const boxs = document.querySelectorAll('.box')
+        let srcDiv = null;
+        for (let i = 0, length = boxs.length; i < length;i++) {
+            let box = boxs[i];
+            box.addEventListener('dragstart', function(event) {
+                srcDiv = this;
+                // 源对象 目标对象
+                // text/html 内容类型
+                event.dataTransfer.setData('text/html',this.innerHTML);
+            })
+            box.addEventListener('dragover', function(event) {
+                event.preventDefault();
+            })
+            box.addEventListener('drop', function(event) {
+                srcDiv.innerHTML = this.innerHTML;
+                this.innerHTML = event.dataTransfer.getData('text/html');
+            })
+        }
+        // box1.addEventListener('dragstart', function(event) {
+        //     // event.dat 
+        // })
+        // box1.addEventListener('dragover', function(event) {
+        //     event.preventDefault();
+        // })
+        // box2.addEventListener('drop', function() {
+        //     this.innerHTML = box1.innerHTML;
+        // })
+    </script>
+</body>
+</html>
