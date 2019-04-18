@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3DCard-Three.js</title>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+  }
+  html,body{
+      height: 100%;
+  }
+  #container{
+      background: #1f1b22;
+  }
+  .container {
+      width: 1448px;
+      height: 750px;
+      /*background: #213543;*/
+  }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="http://go.163.com/web/20190415_3dcard/js/three.js"></script>
+    <script src="http://go.163.com/web/20190415_3dcard/js/tween.min.js"></script>
+    <script src="http://go.163.com/web/20190415_3dcard/js/TrackballControls.js"></script>
+    <script src="http://go.163.com/web/20190415_3dcard/js/CSS3DRenderer.js"></script>
+    <!-- object 显示对象 -->
+    <script src="./objectData.js"></script>
+    <script>
+    // 套路
+    let camera, scene, renderer, controls;
+    window.onload = () => {
+        init();
+        animate();
+    }
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+    }
+    function init() {
+        camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 10000);
+        camera.position.z = 3000;
+        scene = new THREE.Scene();
+        const container = document.createElement('div');
+        container.className = 'container';
+        // object 输出3D的div元素
+        // 3D显示对象，能加到Scene里面，也能输出到DOM里
+        const objectContainer = new THREE.CSS3DObject(container);
+        scene.add(objectContainer);
+        objectData.forEach((cardItem, cardIndex) => {
+            const cardContainer = document.createElement('div');
+            cardContainer.style.width = 1440 + 'px';
+            cardContainer.style.height = 750 + 'px';
+            const objectCardContainer = new THREE.CSS3DObject(cardContainer);
+            objectContainer.add(objectCardContainer);
+            // 背景
+            const card_bg_vertical = document.createElement('div');
+            card_bg_vertical.style.width = cardItem.verticalBg.width + 'px';
+            card_bg_vertical.style.height = cardItem.verticalBg.height + 'px';
+            card_bg_vertical.style.background = 'url(' + cardItem.verticalBg.url + ') no-repeat';
+            const objectCardBgVertical = new THREE.CSS3DObject(card_bg_vertical);
+            objectCardBgVertical.position.y = 80;
+            objectCardContainer.add(objectCardBgVertical);
+            // 地面
+            const card_groud = document.createElement('div');
+            card_groud.style.width = cardItem.ground.width+'px';
+            card_groud.style.height = cardItem.ground.height+'px';
+            card_groud.style.transformOrigin = 'center top';
+            card_groud.style.background = 'url('+cardItem.ground.url+') no-repeat';
+            const objectCardGround = new THREE.CSS3DObject(card_groud);
+            objectCardGround.position.y = 80;
+            objectCardGround.rotation.x = cardItem.ground.rotation;
+            objectCardContainer.add(objectCardGround);
+            // things
+            cardItem.things.forEach((item, index) => {
+                const thing = document.createElement('div');
+                thing.style.width = item.width + 'px';
+                thing.style.height = item.height + 'px';
+                thing.style.background = 'url(' + item.url + ') no-repeat';
+                const objectThing = new THREE.CSS3DObject(thing);
+                objectThing.rotation.x = cardItem.thingsRotation;
+                objectThing.position.y = - (index + 1)*68;
+                objectThing.position.x = item.x;
+                objectThing.position.z = -item.y - 300;
+                objectCardGround.add(objectThing);
+            });
+
+        });
+        renderer = new THREE.CSS3DRenderer();
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+        controls = new THREE.TrackballControls(camera, renderer.domElement);
+        controls.addEventListener('change', render);
+        render();
+    }
+    function render() {
+        renderer.render(scene, camera);
+    }
+    </script>
+</body>
+</html>
