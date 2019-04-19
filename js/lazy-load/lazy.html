@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .image-item {
+        display: block;
+        margin-bottom: 50px;
+        height: 200px;
+    }
+    </style>
+</head>
+<body>
+  <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/a1/149/d/129.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img15.3lian.com/2015/f2/57/d/96.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/93.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://s9.knowsky.com/sc/mjpg/92/2013082412182770364.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://pic1.win4000.com/wallpaper/b/546441f1d83c2.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://www.officedoyen.com/uploads/allimg/140929/1-140929230255201.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/w22/38/d/82.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1393553860400.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/92.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://pic1.win4000.com/wallpaper/2018-01-09/5a547c0cb840c.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://image.biaobaiju.com/uploads/20180802/00/1533139825-SvFkOmnxrA.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img3.xiazaizhijia.com/walls/20160927/1440x900_dec5fdacc3059ca.jpg" />
+  <script>
+      var viewHeight = document.documentElement.clientHeight
+      function lazyload() {
+          var eles = document.querySelectorAll('img[data-original][lazyload]')
+          Array.prototype.forEach.call(eles, function (item, index) {
+              var rect
+              if (item.dataset.original === '')return;
+              rect = item.getBoundingClientRect()
+              if (rect.bottom >= 0 && rect.top < viewHeight) {
+                  !function () {
+                      var img = new Image()
+                      img.src = item.dataset.original
+                      img.onload = function () {
+                          item.src = img.src
+                      }
+                      item.removeAttribute('data-original')
+                      item.removeAttribute('lazyload')
+                  }()
+              }
+          })
+      }
+      lazyload()
+      document.addEventListener('scroll',lazyload)
+  </script>
+</body>
+</html>
