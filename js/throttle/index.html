@@ -35,13 +35,13 @@
         let i = 0;
         return function(args){
             i++;
-            console.log('clear', _timeout, i);
-            clearTimeout(_timeout);
+            console.log('clear',func.id, i);
+            clearTimeout(func.id);
             var that = this;
             func.id = setTimeout(function(){
                 func.call(that, args);
             }, delay);
-            console.log(_timeout, '-------');
+            console.log(func.id, '-------');
         }
     }
     inputa.addEventListener('keyup', function(e) {
