@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>物理引擎</title>
+  <style>
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+  </style>
+  <script src="./phaser.js">
+  </script>
+  <script src="./box2d.js">
+  </script>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+  var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
+    preload: preload,
+    create: create
+  });
+  function preload () {
+    game.load.image('block', './lb.jpg');
+  }
+  function create() {
+    // 切水果游戏？ 
+    game.stage.backgroundColor = '#124184';
+    game.physics.startSystem(Phaser.Physics.BOX2D);
+    game.physics.box2d.setBoundsToWorld();
+    game.physics.box2d.gravity.y = 500;
+    for (var i = 0; i < 5; i++) {
+      var blockSprite = game.add.sprite(150 + i * 125, 300 - i * 50, 'block');
+      // blockSprite.body.angle = 30;
+      game.physics.box2d.enable(blockSprite);
+      blockSprite.body.angle = 30;
+    }
+    game.input.onDown.add(mouseDragStart, this);
+    game.input.addMoveCallback(DragMove, this);
+    game.input.onUp.add(mouseDragEnd, this);
+  }
+  function mouseDragEnd() {
+      game.physics.box2d.mouseDragEnd();
+  }
+  function DragMove() {
+      game.physics.box2d.mouseDragMove(game.input.mousePointer);
+  }
+  function mouseDragStart() {
+    game.physics.box2d.mouseDragStart(game.input.mousePointer);
+  }
+  </script>
+</body>
+</html>
