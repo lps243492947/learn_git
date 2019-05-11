@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js"></script>
+    <script>
+    var user = {
+        info: {
+            avatar: [
+                '/assets/img/lodash.svg',
+                'https://user-gold-cdn.xitu.io/2019/3/9/169606a01fc9b46f?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1'
+            ]
+        }
+    }
+    const img1 = (user && user.info && user.info.avatar && user.info.avatar[1] || 'default image');
+    const img2 = _.get(user, ['info', 'avator', 1], 'default image');
+    </script>
+</body>
+</html>
