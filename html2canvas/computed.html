@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #elem-container {
+        position: absolute;
+        left: 100px;
+        top: 200px;
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <div id="elem-container"></div>
+    <div id="output"></div>
+    <script>
+    function getTheStyle() {
+        let elem = document.getElementById('elem-container');
+        // console.log(elem.style.height);
+        let theCSSCrop = window.getComputedStyle(elem, null).getPropertyValue('height');
+        console.log(window.getComputedStyle(elem, null))
+        document.getElementById('output').innerHTML = theCSSCrop;
+    }
+    getTheStyle();
+    </script>
+</body>
+</html>
