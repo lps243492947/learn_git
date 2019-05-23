@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function curry(fn) {
+        //     var args = Array.prototype.slice.call(arguments, 1)
+        //     return function() {
+        //         var newArgs = args.concat(Array.prototype.slice.call(arguments))
+        //         return fn.apply(this, newArgs)
+        //     }
+        // }
+        // function curry(fn, args) {
+        //     var length = fn.length
+        //     var args = args || []
+        //     return function() {
+        //         var newArgs = args.concat(Array.prototype.slice.call(arguments))
+        //         if(newArgs.length < length) {
+        //             return curry.call(this, fn, newArgs)
+        //         } else {
+        //             return fn.apply(this, newArgs)
+        //         }
+        //     } 
+        // }
+        // function multiFn(a, b, c) {
+        //     return a * b * c
+        // }
+        // var mulit = curry(multiFn)
+        // console.log(mulit(2)(3)(4)(5))
+        function mulit() {
+            var args = Array.prototype.slice.call(arguments)
+            var fn = function() {
+                var newArgs = args.concat(Array.prototype.slice.call(arguments))
+                return mulit.apply(this, newArgs)
+            }
+            fn.toString = function() {
+                return args.reduce(function(a, b){
+                    return a * b
+                }) 
+            }
+            return fn
+        }
+        console.log(mulit(2)(3)(4)(5))
+    </script>
+</body>
+</html>
