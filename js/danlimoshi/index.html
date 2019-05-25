@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Modal(html, show) {
+            this.html = html;
+            this.show = show;
+        }
+        Modal.prototype.open = function() {
+            this.show = true;
+        }
+        Modal.prototype.close = function() {
+            this.show = false;
+        }
+        // 静态方法：不需要 new 即可调用
+        // 只生成一个实例
+        Modal.getInstance = function(html, show) {
+            if(this.instance) {
+                return this.instance
+            }else {
+                this.instance = new Modal(html, show);
+                return this.instance;
+            }
+        }
+        // 首页弹窗
+        const modal = new Modal();
+        // 详情页也有弹窗
+        const modal2 = new Modal();
+        // 解决实例过多的问题 弹窗也应该是唯一的
+        // 单例模式 只生成一个实例
+        const m1 = Modal.getInstance(`<span>hello</span>`, false);
+        const m2 = Modal.getInstance(`<span>world</span>`, false);
+        console.log(m1 === m2);
+        // 幂等 一个函数无论执行多少次 结果都一样
+        // 简单实现单例模式
+        // 缺点是破坏了传统的生成实例的方法 new()，破坏开发者的习惯
+        // 需要调用 getInstance()
+    </script>
+</body>
+</html>
