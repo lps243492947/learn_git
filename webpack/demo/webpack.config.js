@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: './src/index',
   output: {
@@ -20,11 +21,28 @@ module.exports = {
           path.resolve(__dirname, 'src')
         ],
         use: 'babel-loader'
+      },
+      {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [
+                  'css-loader'
+              ]
+          })
+      },
+      {
+          test: /\.(png|jpg|gif)$/,
+          use: [
+              {
+                  loader: 'file-loader'
+              }
+          ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.css'],
     modules: [
       path.resolve(__dirname, 'node_modules')
     ]
@@ -33,7 +51,8 @@ module.exports = {
     new HTMLWebpackPlugin({
         filename: 'index.html',
         template: 'src/index.html'
-    })
+    }),
+    new ExtractTextPlugin('[name].css')
   ],
   devServer: {
       port: '1314',

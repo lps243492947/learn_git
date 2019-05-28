@@ -1,0 +1,21 @@
+.main {
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  .superman {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: url(dea8b7810fd6ddb195f988cefaf09639.gif);
+  }
+  
+  .webpack {
+    width: 600px;
+    height: 240px;
+    margin: 0 auto;
+    background: url(658af3847fca0f13cd7173c45cc38584.png);
+    background-size: 100% 100%;
+  }
+  
