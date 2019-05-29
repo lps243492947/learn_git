@@ -1,0 +1,15 @@
+{
+  "name": "static-resource-server",
+  "version": "1.0.0",
+  "description": "不会随着服务运行而改变内容:html css js 图片",
+  "main": "fileUpload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.1"
+  }
+}
