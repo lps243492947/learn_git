@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+  </div>
+  <script>
+  // 挂载点 mount到根结点上
+  const wrapper = document.querySelector('.wrapper');
+  // String -> DOM  一次性的把str 放到DOM 
+  const createDOMFromString = (domString) => {
+    // DOM 比htmlString 好的地方在于， js 操作
+    const div = document.createElement('div');
+    div.innerHTML = domString;
+    return div;
+  }
+  class LikeButton{
+    constructor () {
+      this.state = {
+        isLiked: false
+      }
+    }
+    // 之前的dom  template 必备的方法
+    changeLikeText () {
+      // console.log(this.el);
+      // 太多的DOM了 
+      // 没有DOM ， 
+      this.setState({
+        isLiked: !this.state.isLiked
+      })
+    }
+    setState(state) {
+      // 将状态更新
+      // VM 模型 this.state   View 视图的实时对应
+      const oldEl = this.el
+      this.state = state;
+      this.el = this.render();
+      // DOM更新
+      if (this.onStateChange)
+        this.onStateChange(oldEl, this.el)
+    }
+    render() {
+      this.el = createDOMFromString(`
+      <button id="like-btn">
+        <span class='like-text'>${this.state.isLiked?'取消':'点赞'}</span>
+      </button>
+      `)
+      this.el.addEventListener('click', this.changeLikeText.bind(this), false);
+      return this.el;
+    }
+  }
+  const likeButton1 = new LikeButton();
+  wrapper.appendChild(likeButton1.render());
+  likeButton1.onStateChange = (oldEl, newEl) => {
+    wrapper.insertBefore(newEl, oldEl);
+    wrapper.removeChild(oldEl);
+  }
+  const likeButton2 = new LikeButton();
+  wrapper.appendChild(likeButton2.render());
+  
+  </script>
+</body>
+</html>
