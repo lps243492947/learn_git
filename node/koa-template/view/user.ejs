@@ -1,0 +1,13 @@
+<%- include('header') %> 
+  <h2>
+    <!-- {{}} {} <%= %> -->
+    <%= user.name %>
+  </h2>
+    <% user.post.forEach((item) => { %>
+      <li>
+        <a href="/post?id=<%= item.id %>">
+          <%= item.title %>
+        </a>
+      </li>
+    <% }) %>
+<%- include('footer') %> 
