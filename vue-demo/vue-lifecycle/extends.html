@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div class="msg">{message}</div>
+    <div class="btn">
+      <button @click="add" >add</button>
+    </div>
+  </div>
+  <script>
+    var ext = {
+      created() {
+        console.log('我是扩展的created')
+      },
+      methods: {
+        add1 () {
+          console.log('我是扩展的方法')  
+      }
+    }
+  }
+    var app = new Vue({
+      el: '#app',
+      data () {
+        return {
+          message: 'hello world'
+        }
+      },
+      created() {
+        console.log('我是原生的created')
+      },
+      methods: {
+        add () {
+          console.log('我是原生的方法')
+        }
+      },
+      extends: ext, // 如果拓展的方法跟methods里面的方法同名的话，则不生效
+      delimiters: ['{', '}']
+    })
+  </script>
+</body>
+</html>
