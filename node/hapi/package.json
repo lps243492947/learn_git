@@ -1,0 +1,21 @@
+{
+  "name": "hapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "hapi": "16",
+    "hapi-swagger": "7",
+    "inert": "4",
+    "joi": "13",
+    "package": "^1.0.1",
+    "vision": "4"
+  }
+}
