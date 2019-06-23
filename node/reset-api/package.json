@@ -1,0 +1,16 @@
+{
+  "name": "reset-api",
+  "version": "1.0.0",
+  "description": "fullstack 全栈\r Front Enginner 前端\r Backend 后端 /api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.15.0"
+  }
+}
