@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <span id="container">1</span>
+  <button id="button">+</button>
+  <script>
+  function watch(obj, name, func) {
+    let value = obj[name];
+    Object.defineProperty(obj, name, {
+      get: function() {
+        return value;
+      },
+      set: function(val) {
+        value = val;
+        func(value);
+      }
+    })
+  }
+  </script>
+  <script>
+    var obj = {};
+    // obj.value = false;
+    var value = false;
+    Object.defineProperty(obj, 'value', {
+      get: function() {
+        console.log('获取了value', value);
+        return value;
+      },
+      set: function(val) {
+        console.log('设置了value', val);
+        // this.value = value;
+        value = val;
+      }
+    })
+    console.log(obj.value);
+    obj.value = true;
+    console.log(obj.value);
+
+    var object1 = {
+      value: 1
+    };
+    watch(object1, 'value', function(newVal) {
+      document.getElementById('container').innerHTML = newVal
+    })
+    document.getElementById('button')
+    .addEventListener('click', function() {
+      object1.value += 1
+    })
+  </script>
+  <script>
+  var object3 = {};
+  Object.defineProperty(object3, 'isLogin', {
+    value: true,
+    enumerable: true
+  })
+  console.log(object3)
+  console.log('keys', Object.keys(object3));
+  for(let key in obj) {
+    console.log('key', key);
+  }
+  object3.isLogin = false;
+  console.log(object3);
+  </script>
+</body>
+</html>
