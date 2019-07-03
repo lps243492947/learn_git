@@ -35,7 +35,7 @@
       </div>
     </div>
     <keep-alive>
-      <router-view :seller="seller"></router-view>
+      <router-view></router-view>
     </keep-alive>
   </div>
 </template>
@@ -45,10 +45,15 @@ export default {
   name: 'App',
   data () {
     return {
-      seller: {
-        // 从api获取
-      }
+      tableData: []
     }
+  },
+  created () {
+    this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/abdomen')
+      .then(res => {
+        console.log(res)
+        this.tableData = Object.assign({}, this.tableData, res.data.data)
+    })
   },
 }
 </script>
@@ -58,6 +63,7 @@ export default {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    overflow: hidden;
   }
   .tab {
     position: fixed;

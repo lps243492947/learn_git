@@ -78,16 +78,67 @@
           </router-link>
         </div>
       </div>
+      <div class="entry">
+        <div class="list" v-for="(item,index) in delivery" :key="index">
+            <img :src="item.url" alt="">
+            <p>{{item.name}}</p>
+        </div>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../../../images/雨神.png" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../../../images/天天1元.png" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../../../images/蜘蛛侠.png" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../../../images/口袋炸鸡店送福利.png" alt="">
+          </div>
+        </div>
+      </div>
     </div>
     <div class="foot">
-
+      
     </div>
   </div>
 </template>
 
 <script>
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 export default {
-
+  name: 'home',
+  props: {
+    tableData: [{
+      type: Object
+    }]
+  },
+  data () {
+    return {
+      delivery: []
+    }
+  },
+  created () {
+    this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/abdomen')
+      .then(res => {
+          this.delivery = res.data.data.abdomen.delivery
+          console.log(this.delivery)
+      })
+  },
+  mounted(){
+    var mySwiper = new Swiper('.swiper-container', {
+      autoplay:true,
+      speed: 1000,
+      spaceBetween : 15,
+      loop: true,
+      slidesPerView : 1.2,
+      centeredSlides : true
+    })
+  },
 }
 </script>
 
@@ -225,15 +276,38 @@ export default {
 .delivery {
   display: flex;
   margin-top: 18px;
+  text-align: center;
 }
 .delivery img {
   width: 160px;
 }
 .send {
   flex: 1;
-  margin-left: 5vw;
 }
 .self {
   flex: 1;
+}
+.entry {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.list {
+  min-width: 20vw;
+  text-align: center;
+  margin-top: 15px;
+}
+.list img {
+  width: 60px;
+  height: 60px;
+}
+.list p {
+  line-height: 0;
+}
+.swiper-container img {
+  width: 85vw;
+  height: 15vh;
 }
 </style>
