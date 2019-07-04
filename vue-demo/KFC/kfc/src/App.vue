@@ -45,16 +45,9 @@ export default {
   name: 'App',
   data () {
     return {
-      tableData: []
     }
   },
-  created () {
-    this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/abdomen')
-      .then(res => {
-        console.log(res)
-        this.tableData = Object.assign({}, this.tableData, res.data.data)
-    })
-  },
+
 }
 </script>
 
@@ -73,6 +66,7 @@ export default {
     border-top: 1px solid rgba(7, 17, 27, 0.1);
     width: 100%;
     display: flex;
+    z-index: 999;
   }
   .tab-item {
     flex: 1;

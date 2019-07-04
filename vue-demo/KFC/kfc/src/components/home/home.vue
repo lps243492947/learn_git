@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="container" ref="bscroll">
+    <div class="bscroll-container">
     <div class="header">
       <div class="top">
         <div class="personal">
@@ -102,7 +103,21 @@
       </div>
     </div>
     <div class="foot">
-      
+      <div class="various">
+        <div class="title">
+          <div class="strip"></div>
+          <p>美味尝鲜</p>
+          <div class="strip"></div>
+        </div>
+        <div class="various_img">
+          <div class="various_title">
+            <img src="../../../images/sy/美味尝鲜1.png" alt="">
+          </div>
+          <div class="various_list">
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -110,6 +125,7 @@
 <script>
 import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.min.css';
+import BScroll from 'better-scroll';
 export default {
   name: 'home',
   props: {
@@ -126,8 +142,17 @@ export default {
     this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/abdomen')
       .then(res => {
           this.delivery = res.data.data.abdomen.delivery
-          console.log(this.delivery)
       })
+    this.$nextTick(() => {
+      this._initScroll()
+    })
+  },
+  methods: {
+    _initScroll() {
+      this.meunScroll = new BScroll(this.$refs.bscroll, {
+        click: true
+      })
+    }
   },
   mounted(){
     var mySwiper = new Swiper('.swiper-container', {
@@ -143,6 +168,11 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 .header {
   width: 100%;
   background-color: #fff;
@@ -308,6 +338,36 @@ export default {
 }
 .swiper-container img {
   width: 85vw;
+  height: 15vh;
+}
+.foot {
+  position: relative;
+}
+.title {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.title p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.strip {
+  width: 20px;
+  height: 5px;
+  background-color: #e8491a;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+.various_img {
+  padding-top: 50px;
+}
+.various_title {
+  text-align: center;
+}
+.various_img img{
+  width: 90vw;
   height: 15vh;
 }
 </style>

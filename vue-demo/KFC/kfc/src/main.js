@@ -6,8 +6,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import axios from 'axios'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
-
+Vue.use(Vant)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
