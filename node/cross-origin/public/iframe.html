@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    内容来自 iframe
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  $.ajax({
+    type: 'GET',
+    url: '/api/post',
+    dataType: 'JSON'
+  })
+  .done(function(res) { console.log('请求结果', res) })
+  .fail(function(e) { console.log(e) })
+  </script>
+</body>
+</html>
