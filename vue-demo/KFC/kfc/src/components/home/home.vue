@@ -103,17 +103,22 @@
       </div>
     </div>
     <div class="foot">
-      <div class="various">
+      <div class="various" v-for="(item,index) in various" :key="index">
         <div class="title">
           <div class="strip"></div>
-          <p>美味尝鲜</p>
+          <p>{{item[0].name}}</p>
           <div class="strip"></div>
         </div>
         <div class="various_img">
           <div class="various_title">
-            <img src="../../../images/sy/美味尝鲜1.png" alt="">
+            <img :src="item[0].urll" alt="">
           </div>
-          <div class="various_list">
+          <div>
+            <div class="various_list">
+              <div v-for="(u,i) in item.slice(1)" :key="i">
+                <img :src="u.url" alt="">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -135,7 +140,9 @@ export default {
   },
   data () {
     return {
-      delivery: []
+      delivery: [],
+      various: [],
+      width: 0
     }
   },
   created () {
@@ -143,8 +150,13 @@ export default {
       .then(res => {
           this.delivery = res.data.data.abdomen.delivery
       })
+    this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/various')
+      .then(res => {
+          this.various = res.data.data.abdomen
+          console.log(this.various)
+      })
     this.$nextTick(() => {
-      this._initScroll()
+      this._initScroll();
     })
   },
   methods: {
@@ -152,8 +164,9 @@ export default {
       this.meunScroll = new BScroll(this.$refs.bscroll, {
         click: true
       })
-    }
+    },
   },
+
   mounted(){
     var mySwiper = new Swiper('.swiper-container', {
       autoplay:true,
@@ -170,7 +183,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  height: 100vh;
+  height: 93vh;
   overflow: hidden;
 }
 .header {
@@ -350,6 +363,7 @@ export default {
   transform: translate(-50%);
 }
 .title p {
+  white-space:nowrap;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -362,12 +376,26 @@ export default {
 }
 .various_img {
   padding-top: 50px;
+  padding-bottom: 15px;
+  background-color: #fff;
+  margin-top: 10px;
 }
 .various_title {
   text-align: center;
 }
-.various_img img{
+.various_title img{
   width: 90vw;
   height: 15vh;
+}
+.various_list {
+  display: flex;
+  margin-top: 10px;
+}
+.various_list :first-child {
+  margin-left: 9px;
+}
+.various_list img {
+  width: 135px;
+  height: 160px;
 }
 </style>
