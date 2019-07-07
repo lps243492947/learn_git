@@ -114,15 +114,15 @@
             <img :src="item[0].urll" alt="">
           </div>
           <div>
-            <div class="various_list">
-              <div v-for="(u,i) in item.slice(1)" :key="i">
-                <img :src="u.url" alt="">
+              <div class="various_list">
+                <div v-for="(u,i) in item.slice(1)" :key="i">
+                  <img :src="u.url" alt="">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -141,8 +141,7 @@ export default {
   data () {
     return {
       delivery: [],
-      various: [],
-      width: 0
+      various: []
     }
   },
   created () {
