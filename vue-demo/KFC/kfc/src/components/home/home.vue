@@ -114,8 +114,8 @@
             <img :src="item[0].urll" alt="">
           </div>
           <div>
-              <div class="various_list">
-                <div v-for="(u,i) in item.slice(1)" :key="i">
+              <div class="various_list" ref="listwrapper">
+                <div class="various_box" v-for="(u,i) in item.slice(1)" :key="i">
                   <img :src="u.url" alt="">
                 </div>
               </div>
@@ -140,6 +140,7 @@ export default {
   },
   data () {
     return {
+      data: [],
       delivery: [],
       various: []
     }
@@ -156,6 +157,9 @@ export default {
       })
     this.$nextTick(() => {
       this._initScroll();
+    })
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.listwrapper, {})
     })
   },
   methods: {
@@ -396,5 +400,8 @@ export default {
 .various_list img {
   width: 135px;
   height: 160px;
+}
+.various_box {
+  white-space: nowrap;
 }
 </style>
