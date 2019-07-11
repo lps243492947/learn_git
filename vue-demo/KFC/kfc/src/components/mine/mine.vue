@@ -182,7 +182,7 @@ export default {
   width: 100%;
   background-color: #fff;
   margin-top: 15px;
-  /* box-shadow:0px 5px 10px #333333; */
+  box-shadow:0px 5px 10px #d6d6d6;
 }
 .title {
   font-size: 16px;

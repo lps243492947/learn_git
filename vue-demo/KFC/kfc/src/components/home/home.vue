@@ -113,10 +113,10 @@
           <div class="various_title">
             <img :src="item[0].urll" alt="">
           </div>
-          <div>
-              <div class="various_list" ref="listwrapper">
+          <div ref="listwrapper" class="index">
+              <div class="various_list">
                 <div class="various_box" v-for="(u,i) in item.slice(1)" :key="i">
-                  <img :src="u.url" alt="">
+                  <img :src="u.url" alt=""> 
                 </div>
               </div>
             </div>
@@ -155,21 +155,27 @@ export default {
           this.various = res.data.data.abdomen
           console.log(this.various)
       })
+      .then(() => {
+        console.log(this.$refs.listwrapper[0])
+        this.$nextTick(() => {
+          this.scroll = new BScroll(this.$refs.listwrapper[0], {
+            scrollX: true,
+            eventPassthrough: 'vertical'
+          })
+        })
+      })
     this.$nextTick(() => {
       this._initScroll();
     })
-    this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.listwrapper, {})
-    })
+    
   },
   methods: {
     _initScroll() {
       this.meunScroll = new BScroll(this.$refs.bscroll, {
         click: true
       })
-    },
+    }
   },
-
   mounted(){
     var mySwiper = new Swiper('.swiper-container', {
       autoplay:true,
