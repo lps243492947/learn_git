@@ -364,6 +364,12 @@ export default {
   width: 85vw;
   height: 15vh;
 }
+.index {
+  overflow-x: scroll;
+}
+.index::-webkit-scrollbar {
+  display: none;
+}
 .foot {
   position: relative;
 }
