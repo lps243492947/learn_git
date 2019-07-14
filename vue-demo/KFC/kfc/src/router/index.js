@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home/home'
-import Mine from '@/components/mine/mine'
-import Order from '@/components/order/order'
-import Shop from '@/components/shop/shop'
+import Home from '@/pages/home/home'
+import Mine from '@/pages/mine/mine'
+import Order from '@/pages/order/order'
+import Shop from '@/pages/shop/shop'
+import Coupon from '@/components/coupon'
+import Wallet from '@/components/wallet'
 
 Vue.use(Router)
 
@@ -28,6 +30,16 @@ export default new Router({
       path: '/shop',
       name: 'Shop',
       component: Shop
+    },
+    {
+      path: '/coupon',
+      name: 'Coupon',
+      component: Coupon
+    },
+    {
+      path: '/wallet',
+      name: 'Wallet',
+      component: Wallet
     }
   ]
 })

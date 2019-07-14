@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import axios from 'axios'
 import Vant from 'vant'
+import store from './vuex/store'
 import 'vant/lib/index.css'
 
 Vue.use(Vant)
@@ -18,6 +19,7 @@ Vue.prototype.$http = axios
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -1,17 +1,17 @@
 <template>
   <div class="header">
     <div class="navbar_left" v-on:click="backTo">
-      <img src="./zuo.png" alt="">
+      <img src="../pages/mine/zuo.png" alt="">
     </div>
     <div class="card">
       <div class="card_header">
         <div class="card_headerimg">
-          <img src="./kfcwowvip.png" alt="">
+          <img src="../pages/mine/kfcwowvip.png" alt="">
         </div>
         <div class="opening">
           <p>90天最高劲省3265元</p>
           <div class="btn">
-            <img src="./lock.png" alt="">
+            <img src="../pages/mine/lock.png" alt="">
             立即开通 >
           </div>
         </div>
@@ -19,7 +19,7 @@
       <div class="card_page">
         <div class="avatar">
           <div class="avatar_img">
-            <img src="./avatar.png" alt="">
+            <img src="../pages/mine/avatar.png" alt="">
           </div>
           <div>
             肯德基会员
@@ -27,24 +27,30 @@
         </div>
         <div class="account">
           <div class="VGold">
-            <p>我的V金</p>
-            <div class="num">
-              <h3>1,359</h3>
-              <img src="./V.png" alt="">
-            </div>
+            <router-link style="color: #000" to="/shop">
+              <p>我的V金</p>
+              <div class="num">
+                <h3>1,359</h3>
+                <img src="../pages/mine/V.png" alt="">
+              </div>
+            </router-link>
           </div>
-          <div class="VGold">
-            <p>我的卡包</p>
-            <div class="num">
-              <h3>4</h3>
+          <router-link style="color: #000" to="/coupon">
+            <div class="VGold">
+              <p>我的卡包</p>
+              <div class="num">
+                <h3>3</h3>
+              </div>
             </div>
-          </div>
-          <div class="VGold">
-            <p>神钱包</p>
-            <div class="num">
-              <h3>0.00元</h3>
+          </router-link>
+            <div class="VGold">
+              <router-link style="color: #000" to="/wallet">
+                <p>神钱包</p>
+                <div class="num">
+                  <h3>0.00元</h3>
+                </div>
+              </router-link>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -59,7 +65,7 @@ export default {
     backTo(){
       this.$router.go(-1);
     },
-},
+  },
 }
 </script>
 
@@ -158,6 +164,6 @@ export default {
   height: 15px;
   position: absolute;
   top: 7vh;
-  left: 23vw;
+  left: 26vw;
 }
 </style>

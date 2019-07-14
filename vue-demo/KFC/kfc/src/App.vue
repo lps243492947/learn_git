@@ -37,17 +37,21 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
+    <v-code></v-code>
   </div>
 </template>
 
 <script>
+import code from './components/code';
 export default {
   name: 'App',
   data () {
     return {
     }
   },
-
+  components: {
+    'v-code': code
+  }
 }
 </script>
 

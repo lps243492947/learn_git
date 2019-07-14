@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <mine-header></mine-header>
-    <div class="key" ref="bscroll">
+    <v-scroll class="key">
       <div class="bscroll-container">
         <div class="medal">
           <div class="title">WOW勋章</div>
@@ -25,16 +25,18 @@
               <img src="./you.png" alt />
             </div>
           </div>
-          <div class="various_container">
-            <div class="various_img">
-              <img src="./youhuiquan.png" alt />
-              <p>优惠券</p>
+          <router-link style="color: #000" to="/coupon">
+            <div class="various_container">
+              <div class="various_img">
+                <img src="./youhuiquan.png" alt />
+                <p>优惠券</p>
+              </div>
+              <div class="jiantou">
+                <span>每月更新，立享优惠</span>
+                <img src="./you.png" alt />
+              </div>
             </div>
-            <div class="jiantou">
-              <span>每月更新，立享优惠</span>
-              <img src="./you.png" alt />
-            </div>
-          </div>
+          </router-link>
           <div class="various_container">
             <div class="various_img">
               <img src="./liwu.png" alt />
@@ -145,30 +147,19 @@
           </div>
         </div>
       </div>
-    </div>
+    </v-scroll>
   </div>
 </template>
 
 <script>
-import MineHeader from "./header";
-import BScroll from "better-scroll";
+import MineHeader from "../../components/mineHeader";
+import scroll from '../../components/scroll';
 export default {
   name: "Mine",
   components: {
-    MineHeader
+    MineHeader,
+    'v-scroll': scroll
   },
-  created() {
-    this.$nextTick(() => {
-      this._initScroll();
-    });
-  },
-  methods: {
-    _initScroll() {
-      this.meunScroll = new BScroll(this.$refs.bscroll, {
-        click: true
-      });
-    }
-  }
 };
 </script>
 

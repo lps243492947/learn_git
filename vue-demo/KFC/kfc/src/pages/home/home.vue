@@ -1,5 +1,7 @@
 <template>
-  <div class="container" ref="bscroll">
+<div class="home">
+  <v-sidebar @active="change"></v-sidebar>
+  <v-scroll :click="true" class="container">
     <div class="bscroll-container">
     <div class="header">
       <div class="top">
@@ -9,20 +11,11 @@
               <img src="./weidenglu.png" alt="icon">
             </div>
           </router-link>
-          <div class="city">
-          <el-dropdown>
+          <div class="city" @click="leftEvent">
             <span class="el-dropdown-link">
-              南昌<i class="el-icon-arrow-down el-icon--right"></i>
+              {{city}}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>上饶</el-dropdown-item>
-            <el-dropdown-item>万年</el-dropdown-item>
-            <el-dropdown-item>永丰</el-dropdown-item>
-            <el-dropdown-item>吉安</el-dropdown-item>
-            <el-dropdown-item divided>南昌</el-dropdown-item>
-          </el-dropdown-menu>
-          </el-dropdown>
-            <p>新建首创 约1.66公里</p>
+            <p>{{city}}首创 约1.66公里</p>
           </div>
         </div>
       <div class="functions">
@@ -47,22 +40,28 @@
           </div>
         </div>
         <div class="wallet">
-          <div class="code tp">
+          <div class="code tp" @click="showCode">
             <img src="./huiyuanma.png" alt="">
             <p>会员码</p>
           </div>
-          <div class="kabaw tp">
-            <img src="./kabao.png" alt="">
-            <p>卡包</p>
-          </div>
-          <div class="coupon tp">
-            <img src="./youhuiquan.png" alt="">
-            <p>优惠券</p>
-          </div>
-          <div class="god tp">
-            <img src="./shenqianbao.png" alt="">
-            <p>神钱包</p>
-          </div>
+          <router-link to="/coupon">
+            <div class="kabaw tp">
+              <img src="./kabao.png" alt="">
+              <p>卡包</p>
+            </div>
+          </router-link>
+          <router-link to="/coupon">
+            <div class="coupon tp">
+              <img src="./youhuiquan.png" alt="">
+              <p>优惠券</p>
+            </div>
+          </router-link>
+          <router-link to="/wallet">
+            <div class="god tp">
+              <img src="./shenqianbao.png" alt="">
+              <p>神钱包</p>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -124,25 +123,40 @@
         </div>
       </div>
     </div>
-  </div>
+  </v-scroll>
+</div>
 </template>
 
-<script>
+<script scoped>
 import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.min.css';
-import BScroll from 'better-scroll';
+import scroll from '../../components/scroll';
+import sidebar from '../../components/sidebar';
 export default {
   name: 'home',
   props: {
-    tableData: [{
-      type: Object
-    }]
+  },
+  components: {
+    'v-scroll': scroll,
+    'v-sidebar': sidebar
   },
   data () {
     return {
       data: [],
+      city: '南昌市',
       delivery: [],
       various: []
+    }
+  },
+  methods: {
+    leftEvent () {
+      this.$store.dispatch('setShowSidebar', true)
+    },
+    change(data) {
+      this.city = data
+    },
+    showCode () {
+      this.$store.dispatch('setShowCode', true)
     }
   },
   created () {
@@ -153,28 +167,16 @@ export default {
     this.$http.get('https://www.easy-mock.com/mock/5ca49494ea0dc52bf3b67f4e/example/various')
       .then(res => {
           this.various = res.data.data.abdomen
-          console.log(this.various)
       })
-      .then(() => {
-        console.log(this.$refs.listwrapper[0])
-        this.$nextTick(() => {
-          this.scroll = new BScroll(this.$refs.listwrapper[0], {
-            scrollX: true,
-            eventPassthrough: 'vertical'
-          })
-        })
-      })
-    this.$nextTick(() => {
-      this._initScroll();
-    })
-    
-  },
-  methods: {
-    _initScroll() {
-      this.meunScroll = new BScroll(this.$refs.bscroll, {
-        click: true
-      })
-    }
+      // .then(() => {
+      //   console.log(this.$refs.listwrapper[0])
+      //   this.$nextTick(() => {
+      //     this.scroll = new BScroll(this.$refs.listwrapper[0], {
+      //       scrollX: true,
+      //       eventPassthrough: 'vertical'
+      //     })
+      //   })
+      // })
   },
   mounted(){
     var mySwiper = new Swiper('.swiper-container', {
@@ -401,7 +403,7 @@ export default {
   margin-top: 10px;
 }
 .various_list :first-child {
-  margin-left: 9px;
+  margin-left: 2.5vw;
 }
 .various_list img {
   width: 135px;
@@ -409,5 +411,9 @@ export default {
 }
 .various_box {
   white-space: nowrap;
+}
+.listwrapper_box {
+  width: 80vw;
+  overflow: hidden;
 }
 </style>

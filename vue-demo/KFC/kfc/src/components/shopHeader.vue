@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <div class="navbar_left" v-on:click="backTo">
-      <img src="./zuo.png" alt="">
+      <img src="../pages/shop/zuo.png" alt="">
     </div>
-    <van-search v-model="value" placeholder="请输入搜索关键词" show-action shape="round" @search="onSearch">
-    <div class="search" slot="action" @click="onSearch">搜索</div>
-</van-search>
+    <van-search placeholder="请输入搜索关键词" show-action shape="round">
+      <div class="search" slot="action">搜索</div>
+    </van-search>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
 .header {
   display: flex;
   background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
 }
 .navbar_left img {
   width: 25px;
