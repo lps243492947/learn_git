@@ -6,7 +6,6 @@ import Order from '@/pages/order/order'
 import Shop from '@/pages/shop/shop'
 import Coupon from '@/components/coupon'
 import Wallet from '@/components/wallet'
-import Goods from '@/components/takeout'
 
 Vue.use(Router)
 
@@ -41,11 +40,6 @@ export default new Router({
       path: '/wallet',
       name: 'Wallet',
       component: Wallet
-    },
-    {
-      path: '/goods',
-      name: 'Goods',
-      component: Goods
     }
   ]
 })

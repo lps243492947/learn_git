@@ -1,5 +1,6 @@
 <template>
 <div class="home">
+  <v-takeout></v-takeout>
   <v-sidebar @active="change"></v-sidebar>
   <v-scroll :click="true" class="container">
     <div class="bscroll-container">
@@ -67,10 +68,8 @@
     </div>
     <div class="abdomen">
       <div class="delivery">
-        <div class="send">
-          <router-link to="">
+        <div class="send" @click="takeout">
             <img src="./waisongdiancan.png" alt="">
-          </router-link>
         </div>
         <div class="self">
           <router-link to="">
@@ -132,13 +131,15 @@ import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.min.css';
 import scroll from '../../components/scroll';
 import sidebar from '../../components/sidebar';
+import takeout from '../../components/takeout';
 export default {
   name: 'home',
   props: {
   },
   components: {
     'v-scroll': scroll,
-    'v-sidebar': sidebar
+    'v-sidebar': sidebar,
+    'v-takeout': takeout
   },
   data () {
     return {
@@ -157,6 +158,9 @@ export default {
     },
     showCode () {
       this.$store.dispatch('setShowCode', true)
+    },
+    takeout () {
+      this.$store.dispatch('setShowTakeout', true)
     }
   },
   created () {
