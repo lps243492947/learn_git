@@ -192,6 +192,7 @@ export default {
 .name {
   line-height: 24px;
   font-size: 14px;
+  margin-left: 15px;
   color: rgb(7, 17, 27);
 }
 .price {
