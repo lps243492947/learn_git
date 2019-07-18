@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-con" :class="{showbar: showSidebar}">
-      <div class="navbar_left" v-on:click="backTo">
+      <div class="navbar_left" @click="backTo">
         <img src="../pages/mine/zuo.png" alt="">
       </div>
         <van-tree-select :height="850" :items="items" :main-active-index="mainActiveIndex" :active-id="activeId" @navclick="onNavClick" @itemclick="onItemClick"/>

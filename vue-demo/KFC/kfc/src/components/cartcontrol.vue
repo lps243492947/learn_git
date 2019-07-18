@@ -30,7 +30,7 @@ export default {
   methods: {
     addCart (event) {
       console.log(event)
-      if (!event._constructed) { //如果不存在这个属性,则为原生点击事件，不执行下面的函数
+      if (!event._constructed) {
         return
       }
       if (!this.food.count) {
@@ -41,7 +41,7 @@ export default {
       this.$emit('add', event.target)
     },
     decreaseCart (event) {
-      if (!event._constructed) { //如果不存在这个属性,则为原生点击事件，不执行下面的函数
+      if (!event._constructed) {
         return
       }
       if (this.food.count) {

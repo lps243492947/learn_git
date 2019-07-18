@@ -148,7 +148,6 @@ export default {
     _calculateHeight () {
       let foodList = this.$refs.foodList
       let height = 0
-      // this.listHeight.push(height)
       for (let i = 0; i < foodList.length; i++) {
         let item = foodList[i]
         height += item.clientHeight

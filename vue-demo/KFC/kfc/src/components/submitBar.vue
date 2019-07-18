@@ -32,11 +32,10 @@
       </div>
     </div>
   </transition>
-    <transition name="fade">
-      <div class="list-mask" @click="hideList" v-show="listShow"></div>
+  <transition name="fade">
+    <div class="list-mask" @click="hideList" v-show="listShow"></div>
   </transition>
 </div>
-
 </template>
 
 <script>
