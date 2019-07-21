@@ -1,0 +1,18 @@
+{
+  "name": "vue-blog",
+  "version": "1.0.0",
+  "description": "SEO Nuxt vue ssr框架\r SPA #root 其他的都是.vue => js\r index.html html的内容输出",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt",
+    "server": "cross-env NODE_ENV=development nodemon server/index.js --watch server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "express": "^4.17.1",
+    "nuxt": "^2.8.1"
+  }
+}
