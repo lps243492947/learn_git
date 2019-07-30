@@ -158,12 +158,26 @@ export default {
     }
   },
   methods: {
-    toggleList () {},
-    beforeDrop () {},
-    dropping () {},
-    afterDrop () {},
-    empty () {},
-    hideList () {}
+ toggleList(){
+        if (!this.totalCount) {
+          return;
+        }
+        this.fold = !this.fold;
+      },
+      empty() { //通过清空数据属性来控制购物车清空
+        this.selectFoods.forEach((food) => {
+          food.count = 0;
+        });
+      },
+      hideList() {
+        this.fold = true;
+      },
+      pay() {
+        if (this.totalPrice < this.minPrice) {
+          return;
+        }
+        window.alert(`支付${this.totalPrice}元`);
+      }
   }
 };
 </script>
