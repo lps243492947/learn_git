@@ -7,6 +7,5 @@
 - flex 布局
   flex-grow flex-basis flex-shrink flex-wrap
   当网页由PC到mobile时，缩小阵仗
-
 经验 就是由简单的适配PC到mobile 照顾所有的用户
 PC大手大脚一点，max-width magin: auto padding margin mobile flex-shrink 让关键部分坚挺一点
