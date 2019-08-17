@@ -299,7 +299,8 @@ export default {
   display: block;
   font-size: 14px;
   color: #696969;
-  padding: 0 25px 35px 50px;
+  padding: 0 25px 35px 35px;
+  
 }
 .my_gold img {
   width: 15px;
@@ -307,6 +308,7 @@ export default {
 }
 .u {
   margin-top: 15px;
+  margin-left: 5px;
 }
 .my_gold u {
   color: #4a4a4a;
