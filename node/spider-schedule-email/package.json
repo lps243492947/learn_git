@@ -12,7 +12,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "ejs": "^2.6.1",
-    "nodemailer": "^6.2.1",
+    "nodemailer": "^6.4.16",
     "superagent": "^5.0.5"
   }
 }
